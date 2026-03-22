@@ -1,0 +1,17 @@
+media:
+  input: assets/images
+  output: /assets/images
+
+content:
+  - name: people
+    label: People
+    path: _people
+    type: collection
+    fields:
+      - { name: name, label: Full Name, type: string }
+      - { name: email, label: Email, type: string }
+      - { name: phone, label: Phone, type: string }
+      - { name: instagram, label: Instagram URL, type: string }
+      - { name: facebook, label: Facebook URL, type: string }
+      - { name: profile_image, label: Profile Image, type: image }
+      - { name: body, label: Bio / Info, type: rich-text }
