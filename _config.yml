@@ -1,1 +1,9 @@
-
+title: My Directory Site
+description: A people directory
+theme: minima
+plugins:
+  - jekyll-feed
+collections:
+  people:
+    output: true
+    permalink: /people/:name/
