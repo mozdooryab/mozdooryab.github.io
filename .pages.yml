@@ -8,6 +8,8 @@ content:
     type: collection
     path: _australia
     filename: "{fields.slug}.md"
+    view:
+      fields: [featured_image, name_fa, city, role]
     fields:
       - { name: layout, label: Layout, type: string, default: "person", hidden: true }
       - { name: title, label: Title, type: string, required: false }
@@ -26,3 +28,6 @@ content:
       - { name: gallery_image_1, label: Gallery Image 1, type: image, required: false }
       - { name: gallery_image_2, label: Gallery Image 2, type: image, required: false }
       - { name: tags_text, label: Tags, type: string, required: false }
+      - name: body
+        label: Body
+        type: rich-text
