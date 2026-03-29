@@ -18,4 +18,109 @@ layout: default
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:24px;">
     {{ content }}
   </div>
+
+  <section style="margin-top:28px;">
+    <h2 style="margin-bottom:16px;">ارتباط با ما</h2>
+    <p style="color:var(--muted);margin-bottom:16px;">ارسال پیام.</p>
+
+    <div id="person-form-status" style="display:none;margin:16px 0;padding:14px 16px;border-radius:14px;font-weight:700;"></div>
+
+    <form id="person-contact-form" style="display:grid;gap:16px;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:24px;">
+      <input type="hidden" name="access_key" value="ee3cebe3-80ad-4b98-8a06-3f09e4b342a6">
+      <input type="hidden" name="subject" value="پیام جدید از صفحه {{ page.name_fa }}">
+      <input type="hidden" name="from_name" value="وب‌سایت من">
+      <input type="hidden" name="page_title" value="{{ page.name_fa }} | {{ page.name_en }}">
+      <input type="hidden" name="page_url" value="{{ site.url }}{{ page.url }}">
+      <input type="checkbox" name="botcheck" style="display:none;">
+      <input type="hidden" name="submitted_at" id="person_submitted_at">
+
+      <label>
+        <div style="margin-bottom:8px;font-weight:700;">نام</div>
+        <input name="name" type="text" required style="width:100%;padding:14px 16px;border:1px solid var(--border);border-radius:14px;background:var(--bg);color:var(--text);font:inherit;">
+      </label>
+
+      <label>
+        <div style="margin-bottom:8px;font-weight:700;">ایمیل</div>
+        <input name="email" type="email" required style="width:100%;padding:14px 16px;border:1px solid var(--border);border-radius:14px;background:var(--bg);color:var(--text);font:inherit;">
+      </label>
+
+      <label>
+        <div style="margin-bottom:8px;font-weight:700;">پیام</div>
+        <textarea name="message" rows="7" required style="width:100%;padding:14px 16px;border:1px solid var(--border);border-radius:14px;background:var(--bg);color:var(--text);font:inherit;"></textarea>
+      </label>
+
+      <button type="submit" id="person-submit-btn" style="border:none;border-radius:999px;padding:14px 18px;background:var(--primary);color:white;font:inherit;font-weight:800;cursor:pointer;">
+        ارسال پیام
+      </button>
+    </form>
+  </section>
 </article>
+
+<script>
+  const personForm = document.getElementById("person-contact-form");
+  const personStatus = document.getElementById("person-form-status");
+  const personBtn = document.getElementById("person-submit-btn");
+  const personSubmittedAt = document.getElementById("person_submitted_at");
+
+  if (personSubmittedAt) personSubmittedAt.value = Date.now();
+
+  if (personForm) {
+    personForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const started = Number(personSubmittedAt.value || Date.now());
+      const elapsed = Date.now() - started;
+      const botcheck = personForm.querySelector('input[name="botcheck"]').checked;
+
+      if (botcheck || elapsed < 3000) {
+        personStatus.style.display = "block";
+        personStatus.style.background = "#fee2e2";
+        personStatus.style.color = "#991b1b";
+        personStatus.textContent = "ارسال فرم انجام نشد.";
+        return;
+      }
+
+      personBtn.disabled = true;
+      personBtn.textContent = "در حال ارسال...";
+
+      const formData = new FormData(personForm);
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+
+      try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: json
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          personForm.reset();
+          personSubmittedAt.value = Date.now();
+          personStatus.style.display = "block";
+          personStatus.style.background = "#dff7ea";
+          personStatus.style.color = "#14532d";
+          personStatus.textContent = "پیام شما دریافت شد.";
+        } else {
+          personStatus.style.display = "block";
+          personStatus.style.background = "#fee2e2";
+          personStatus.style.color = "#991b1b";
+          personStatus.textContent = result.message || "ارسال پیام انجام نشد.";
+        }
+      } catch (error) {
+        personStatus.style.display = "block";
+        personStatus.style.background = "#fee2e2";
+        personStatus.style.color = "#991b1b";
+        personStatus.textContent = "خطا در ارسال فرم.";
+      }
+
+      personBtn.disabled = false;
+      personBtn.textContent = "ارسال پیام";
+    });
+  }
+</script>
