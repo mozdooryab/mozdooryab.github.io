@@ -1,6 +1,6 @@
 ---
 layout: person
-title: اینجا نوشته عنوان
+title: اینجا نوشته عنوانثصبثصبصثبصثبثصبصث
 name_fa: آقا خره
 name_en: agha khare
 slug: agha khare
@@ -20,7 +20,6 @@ tags_text: tag1
 این یارو خیلی جاکشه  
 
 
-
 | جاکش بازی | خر | گاه |
 | --------- | ---- | --- |
 | صثب | صثبص | 1 |
@@ -29,5 +28,4 @@ tags_text: tag1
 
 ![khar](/assets/uploads/QT6RYBuk.jpg)
 
-  
 اینو بزنید
