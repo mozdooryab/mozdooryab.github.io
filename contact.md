@@ -41,9 +41,24 @@ permalink: /contact/
   const form = document.getElementById("contact-form");
   const statusBox = document.getElementById("form-status");
   const submitBtn = document.getElementById("submit-btn");
+  const submittedAt = document.getElementById("submitted_at");
+
+  submittedAt.value = Date.now();
 
   form.addEventListener("submit", async function (e) {
     e.preventDefault();
+
+    const started = Number(submittedAt.value || Date.now());
+    const elapsed = Date.now() - started;
+    const botcheck = form.querySelector('input[name="botcheck"]').checked;
+
+    if (botcheck || elapsed < 3000) {
+      statusBox.style.display = "block";
+      statusBox.style.background = "#fee2e2";
+      statusBox.style.color = "#991b1b";
+      statusBox.textContent = "ارسال فرم انجام نشد.";
+      return;
+    }
 
     submitBtn.disabled = true;
     submitBtn.textContent = "در حال ارسال...";
@@ -66,6 +81,7 @@ permalink: /contact/
 
       if (result.success) {
         form.reset();
+        submittedAt.value = Date.now();
         statusBox.style.display = "block";
         statusBox.style.background = "#dff7ea";
         statusBox.style.color = "#14532d";
@@ -74,7 +90,7 @@ permalink: /contact/
         statusBox.style.display = "block";
         statusBox.style.background = "#fee2e2";
         statusBox.style.color = "#991b1b";
-        statusBox.textContent = "ارسال پیام انجام نشد.";
+        statusBox.textContent = result.message || "ارسال پیام انجام نشد.";
       }
     } catch (error) {
       statusBox.style.display = "block";
