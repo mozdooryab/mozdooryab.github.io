@@ -5,9 +5,9 @@ name_fa: آقا خره
 name_en: agha khare
 slug: agha khare
 city: سیدنی استرالیا
-role: کارمند
-email: email inja
-phone: "0411111"
+role: کارمند سفارت ایران در استرالیا
+email: email inja @ ifhweifhwie . wfuhiwfiwe
+phone: "04111111111111111111111111111111111"
 website: wesbite.com
 instagram: insta
 facebook: fb
