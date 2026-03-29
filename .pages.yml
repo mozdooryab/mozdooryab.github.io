@@ -12,23 +12,19 @@ content:
       fields: [featured_image, name_fa, city, role]
     fields:
       - { name: layout, label: Layout, type: string, default: "person", hidden: true }
-
+      - { name: title, label: Title, type: string, required: false }
       - { name: name_fa, label: Name FA, type: string, required: true }
       - { name: name_en, label: Name EN, type: string, required: true }
       - { name: slug, label: Slug, type: string, required: true }
-
       - { name: city, label: City, type: string, required: false }
       - { name: role, label: Role, type: string, required: false }
-
       - { name: email, label: Email, type: string, required: false }
-      - { name: website, label: LinkedIn ID, type: string, required: false }
-
-      - { name: instagram, label: Instagram ID, type: string, required: false }
-      - { name: facebook, label: Facebook ID, type: string, required: false }
-      - { name: telegram, label: Telegram ID, type: string, required: false }
-
+      - { name: phone, label: Phone, type: string, required: false }
+      - { name: website, label: Website, type: string, required: false }
+      - { name: instagram, label: Instagram, type: string, required: false }
+      - { name: facebook, label: Facebook, type: string, required: false }
+      - { name: telegram, label: Telegram, type: string, required: false }
       - { name: featured_image, label: Featured Image, type: image, required: false }
-
       - { name: gallery_image_1, label: Gallery Image 1, type: image, required: false }
       - { name: gallery_image_2, label: Gallery Image 2, type: image, required: false }
       - { name: gallery_image_3, label: Gallery Image 3, type: image, required: false }
@@ -37,15 +33,14 @@ content:
       - { name: gallery_image_6, label: Gallery Image 6, type: image, required: false }
       - { name: gallery_image_7, label: Gallery Image 7, type: image, required: false }
       - { name: gallery_image_8, label: Gallery Image 8, type: image, required: false }
-
       - { name: video_url_1, label: Video URL 1, type: string, required: false }
       - { name: video_url_2, label: Video URL 2, type: string, required: false }
       - { name: video_url_3, label: Video URL 3, type: string, required: false }
       - { name: video_url_4, label: Video URL 4, type: string, required: false }
-
       - { name: tags_text, label: Tags comma separated, type: string, required: false }
-
-      - { name: body, label: Body, type: rich-text }
+      - name: body
+        label: Body
+        type: rich-text
 
   - name: pages
     label: Pages
@@ -56,11 +51,14 @@ content:
         path: about.md
         fields:
           - { name: title, label: Title, type: string }
-          - { name: body, label: Body, type: rich-text }
-
+          - name: body
+            label: Body
+            type: rich-text
       - name: contact
         label: Contact
         path: contact.md
         fields:
           - { name: title, label: Title, type: string }
-          - { name: body, label: Body, type: rich-text }
+          - name: body
+            label: Body
+            type: rich-text
