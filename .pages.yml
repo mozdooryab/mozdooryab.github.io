@@ -1,3 +1,4 @@
+# config v2
 media:
   input: assets/uploads
   output: /assets/uploads
