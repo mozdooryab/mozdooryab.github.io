@@ -1,5 +1,5 @@
 media:
-  input: assets/uploads
+Cannot read properties of undefined (reading 'replace')
   output: /assets/uploads
 
 content:
