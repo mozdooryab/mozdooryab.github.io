@@ -2,31 +2,39 @@
 layout: default
 ---
 
-<article>
-  <h1 style="margin-bottom:12px;font-size:2rem;">
-    {{ page.name_fa }}{% if page.name_en %} | {{ page.name_en }}{% endif %}
-  </h1>
+<article class="person-page">
+  <header class="person-hero">
+    <div class="person-meta">
+      {% if page.city %}
+        <div class="person-city">{{ page.city }}</div>
+      {% endif %}
 
-  {% if page.city %}
-    <div style="color:var(--muted);margin-bottom:20px;">{{ page.city }}</div>
-  {% endif %}
+      <h1 class="person-title">
+        {{ page.name_fa }}{% if page.name_en %}<span>{{ page.name_en }}</span>{% endif %}
+      </h1>
+    </div>
 
-  {% if page.featured_image %}
-    <img src="{{ page.featured_image }}" alt="{{ page.name_fa }}" style="margin-bottom:24px;">
-  {% endif %}
+    {% if page.featured_image %}
+      <figure class="person-featured">
+        <img src="{{ page.featured_image }}" alt="{{ page.name_fa }}">
+      </figure>
+    {% endif %}
+  </header>
 
-  <div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:24px;">
-    {{ content }}
-  </div>
+  <section class="person-content-wrap">
+    <div class="person-content prose">
+      {{ content }}
+    </div>
+  </section>
 
-  <section style="margin-top:28px;">
-    <h2 style="margin-bottom:16px;">ارتباط با ما</h2>
-    <p style="color:var(--muted);margin-bottom:16px;">ارسال پیام.</p>
+  <section class="person-contact">
+    <h2>ارتباط با ما</h2>
+    <p class="person-contact-note">پیام شما برای سایت ارسال می‌شود، نه برای شخص.</p>
 
     <div id="person-form-status" style="display:none;margin:16px 0;padding:14px 16px;border-radius:14px;font-weight:700;"></div>
 
-    <form id="person-contact-form" style="display:grid;gap:16px;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:24px;">
-      <input type="hidden" name="access_key" value="ee3cebe3-80ad-4b98-8a06-3f09e4b342a6">
+    <form id="person-contact-form" class="contact-card">
+      <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
       <input type="hidden" name="subject" value="پیام جدید از صفحه {{ page.name_fa }}">
       <input type="hidden" name="from_name" value="وب‌سایت من">
       <input type="hidden" name="page_title" value="{{ page.name_fa }} | {{ page.name_en }}">
@@ -35,26 +43,171 @@ layout: default
       <input type="hidden" name="submitted_at" id="person_submitted_at">
 
       <label>
-        <div style="margin-bottom:8px;font-weight:700;">نام</div>
-        <input name="name" type="text" required style="width:100%;padding:14px 16px;border:1px solid var(--border);border-radius:14px;background:var(--bg);color:var(--text);font:inherit;">
+        <div class="field-label">نام</div>
+        <input name="name" type="text" required class="field-input">
       </label>
 
       <label>
-        <div style="margin-bottom:8px;font-weight:700;">ایمیل</div>
-        <input name="email" type="email" required style="width:100%;padding:14px 16px;border:1px solid var(--border);border-radius:14px;background:var(--bg);color:var(--text);font:inherit;">
+        <div class="field-label">ایمیل</div>
+        <input name="email" type="email" required class="field-input">
       </label>
 
       <label>
-        <div style="margin-bottom:8px;font-weight:700;">پیام</div>
-        <textarea name="message" rows="7" required style="width:100%;padding:14px 16px;border:1px solid var(--border);border-radius:14px;background:var(--bg);color:var(--text);font:inherit;"></textarea>
+        <div class="field-label">پیام</div>
+        <textarea name="message" rows="7" required class="field-input"></textarea>
       </label>
 
-      <button type="submit" id="person-submit-btn" style="border:none;border-radius:999px;padding:14px 18px;background:var(--primary);color:white;font:inherit;font-weight:800;cursor:pointer;">
+      <button type="submit" id="person-submit-btn" class="submit-btn">
         ارسال پیام
       </button>
     </form>
   </section>
 </article>
+
+<style>
+  .person-page {
+    display: grid;
+    gap: 32px;
+  }
+
+  .person-hero {
+    display: grid;
+    gap: 20px;
+  }
+
+  .person-city {
+    color: var(--muted);
+    font-size: .95rem;
+    margin-bottom: 8px;
+  }
+
+  .person-title {
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.15;
+    font-weight: 800;
+    display: grid;
+    gap: 8px;
+  }
+
+  .person-title span {
+    color: var(--muted);
+    font-size: clamp(1rem, 2vw, 1.35rem);
+    font-weight: 500;
+    direction: ltr;
+    unicode-bidi: embed;
+  }
+
+  .person-featured img {
+    width: 100%;
+    max-height: 540px;
+    object-fit: cover;
+    border-radius: 24px;
+  }
+
+  .person-content-wrap {
+    display: flex;
+    justify-content: center;
+  }
+
+  .person-content {
+    width: 100%;
+    max-width: 760px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 28px;
+  }
+
+  .prose p {
+    margin: 0 0 1.2em;
+  }
+
+  .prose h2, .prose h3, .prose h4 {
+    margin-top: 1.8em;
+    margin-bottom: .8em;
+  }
+
+  .prose ul, .prose ol {
+    margin: 0 0 1.2em;
+    padding-right: 1.4em;
+  }
+
+  .prose blockquote {
+    margin: 1.5em 0;
+    padding: 12px 16px;
+    border-right: 4px solid var(--primary);
+    background: var(--bg);
+    border-radius: 14px;
+  }
+
+  .prose img, .prose video {
+    margin: 1.5em auto;
+    border-radius: 18px;
+  }
+
+  .person-contact {
+    max-width: 760px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .person-contact h2 {
+    margin-bottom: 10px;
+  }
+
+  .person-contact-note {
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  .contact-card {
+    display: grid;
+    gap: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 24px;
+  }
+
+  .field-label {
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+
+  .field-input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--bg);
+    color: var(--text);
+    font: inherit;
+  }
+
+  .submit-btn {
+    border: none;
+    border-radius: 999px;
+    padding: 14px 18px;
+    background: var(--primary);
+    color: white;
+    font: inherit;
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  @media (max-width: 700px) {
+    .person-content,
+    .contact-card {
+      padding: 18px;
+      border-radius: 18px;
+    }
+
+    .person-featured img {
+      border-radius: 18px;
+    }
+  }
+</style>
 
 <script>
   const personForm = document.getElementById("person-contact-form");
