@@ -4,15 +4,36 @@ media:
 
 content:
   - name: australia
-    label: Australia
+    label: افراد
     type: collection
     path: _australia
     filename: "{fields.slug}.md"
+    view:
+      fields: [featured_image, name_fa, city]
     fields:
-      - { name: layout, type: string, default: person, hidden: true }
-      - { name: name_fa, label: Name FA, type: string }
-      - { name: name_en, label: Name EN, type: string }
-      - { name: slug, label: Slug, type: string }
-      - { name: city, label: City, type: string, required: false }
-      - { name: featured_image, label: Featured Image, type: image, required: false }
-      - { name: body, label: Body, type: rich-text }
+      - { name: layout, label: Layout, type: string, default: person, hidden: true }
+      - { name: title, label: Title, type: string, required: false }
+      - { name: name_fa, label: نام فارسی, type: string, required: true }
+      - { name: name_en, label: نام انگلیسی, type: string, required: true }
+      - { name: slug, label: اسلاگ انگلیسی, type: string, required: true }
+      - { name: city, label: شهر, type: string, required: false }
+      - { name: featured_image, label: عکس منتخب, type: image, required: false }
+      - { name: body, label: متن و محتوا, type: rich-text }
+
+  - name: pages
+    label: صفحه‌ها
+    type: file
+    files:
+      - name: about
+        label: درباره ما
+        path: about.md
+        fields:
+          - { name: title, label: عنوان, type: string }
+          - { name: body, label: متن, type: rich-text }
+
+      - name: contact
+        label: ارتباط با ما
+        path: contact.md
+        fields:
+          - { name: title, label: عنوان, type: string }
+          - { name: body, label: متن, type: rich-text }
