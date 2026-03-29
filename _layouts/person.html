@@ -4,21 +4,60 @@ layout: default
 
 <article class="person-page">
   <header class="person-hero">
-    <div class="person-meta">
-      {% if page.city %}
-        <div class="person-city">{{ page.city }}</div>
+    <div class="person-hero-grid">
+      {% if page.featured_image %}
+        <div class="person-hero-media">
+          <img src="{{ page.featured_image }}" alt="{{ page.name_fa }}">
+        </div>
       {% endif %}
 
-      <h1 class="person-title">
-        {{ page.name_fa }}{% if page.name_en %}<span>{{ page.name_en }}</span>{% endif %}
-      </h1>
-    </div>
+      <div class="person-hero-info">
+        <div class="person-city">{{ page.city }}</div>
 
-    {% if page.featured_image %}
-      <figure class="person-featured">
-        <img src="{{ page.featured_image }}" alt="{{ page.name_fa }}">
-      </figure>
-    {% endif %}
+        <h1 class="person-title">
+          {{ page.name_fa }}
+          {% if page.name_en %}
+            <span>{{ page.name_en }}</span>
+          {% endif %}
+        </h1>
+
+        <div class="person-keyfacts">
+          {% if page.role %}
+            <div class="fact-row">
+              <strong>عنوان</strong>
+              <span>{{ page.role }}</span>
+            </div>
+          {% endif %}
+
+          {% if page.phone %}
+            <div class="fact-row">
+              <strong>تلفن</strong>
+              <span>{{ page.phone }}</span>
+            </div>
+          {% endif %}
+
+          {% if page.email %}
+            <div class="fact-row">
+              <strong>ایمیل</strong>
+              <span>{{ page.email }}</span>
+            </div>
+          {% endif %}
+
+          {% if page.website %}
+            <div class="fact-row">
+              <strong>وب‌سایت</strong>
+              <span><a href="{{ page.website }}" target="_blank" rel="noopener noreferrer">{{ page.website }}</a></span>
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="person-links">
+          {% if page.instagram %}<a href="{{ page.instagram }}" target="_blank" rel="noopener noreferrer">Instagram</a>{% endif %}
+          {% if page.facebook %}<a href="{{ page.facebook }}" target="_blank" rel="noopener noreferrer">Facebook</a>{% endif %}
+          {% if page.telegram %}<a href="{{ page.telegram }}" target="_blank" rel="noopener noreferrer">Telegram</a>{% endif %}
+        </div>
+      </div>
+    </div>
   </header>
 
   <section class="person-content-wrap">
@@ -26,6 +65,38 @@ layout: default
       {{ content }}
     </div>
   </section>
+
+  {% if page.gallery_images and page.gallery_images.size > 0 %}
+  <section class="gallery-section">
+    <h2>گالری تصاویر</h2>
+    <div class="gallery-grid">
+      {% for item in page.gallery_images %}
+        {% if item.image %}
+          <figure class="gallery-card">
+            <img src="{{ item.image }}" alt="{{ page.name_fa }} gallery image" loading="lazy">
+          </figure>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if page.gallery_videos and page.gallery_videos.size > 0 %}
+  <section class="gallery-section">
+    <h2>ویدیوها</h2>
+    <div class="video-grid">
+      {% for item in page.gallery_videos %}
+        {% if item.video_url %}
+          <div class="video-card">
+            <video controls preload="metadata">
+              <source src="{{ item.video_url }}">
+            </video>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
 
   <section class="person-contact">
     <h2>ارتباط با ما</h2>
@@ -65,25 +136,43 @@ layout: default
 </article>
 
 <style>
-  .person-page {
+  .person-page { display: grid; gap: 32px; }
+
+  .person-hero-grid {
     display: grid;
-    gap: 32px;
+    grid-template-columns: minmax(280px, 420px) 1fr;
+    gap: 28px;
+    align-items: stretch;
   }
 
-  .person-hero {
-    display: grid;
-    gap: 20px;
+  .person-hero-media img {
+    width: 100%;
+    height: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: 24px;
+  }
+
+  .person-hero-info {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: right;
   }
 
   .person-city {
     color: var(--muted);
     font-size: .95rem;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
 
   .person-title {
-    margin: 0;
-    font-size: clamp(2rem, 4vw, 3.5rem);
+    margin: 0 0 20px;
+    font-size: clamp(2rem, 4vw, 3rem);
     line-height: 1.15;
     font-weight: 800;
     display: grid;
@@ -92,17 +181,42 @@ layout: default
 
   .person-title span {
     color: var(--muted);
-    font-size: clamp(1rem, 2vw, 1.35rem);
+    font-size: clamp(1rem, 2vw, 1.25rem);
     font-weight: 500;
     direction: ltr;
     unicode-bidi: embed;
+    justify-self: start;
   }
 
-  .person-featured img {
-    width: 100%;
-    max-height: 540px;
-    object-fit: cover;
-    border-radius: 24px;
+  .person-keyfacts {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .fact-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 12px;
+    align-items: start;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+  }
+
+  .fact-row strong { color: var(--text); }
+  .fact-row span, .fact-row a { color: var(--muted); word-break: break-word; }
+
+  .person-links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .person-links a {
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 8px 12px;
+    background: var(--bg);
   }
 
   .person-content-wrap {
@@ -112,27 +226,16 @@ layout: default
 
   .person-content {
     width: 100%;
-    max-width: 760px;
+    max-width: 780px;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 24px;
     padding: 28px;
   }
 
-  .prose p {
-    margin: 0 0 1.2em;
-  }
-
-  .prose h2, .prose h3, .prose h4 {
-    margin-top: 1.8em;
-    margin-bottom: .8em;
-  }
-
-  .prose ul, .prose ol {
-    margin: 0 0 1.2em;
-    padding-right: 1.4em;
-  }
-
+  .prose p { margin: 0 0 1.2em; }
+  .prose h2, .prose h3, .prose h4 { margin-top: 1.8em; margin-bottom: .8em; }
+  .prose ul, .prose ol { margin: 0 0 1.2em; padding-right: 1.4em; }
   .prose blockquote {
     margin: 1.5em 0;
     padding: 12px 16px;
@@ -140,26 +243,49 @@ layout: default
     background: var(--bg);
     border-radius: 14px;
   }
-
   .prose img, .prose video {
     margin: 1.5em auto;
     border-radius: 18px;
   }
 
+  .gallery-section {
+    display: grid;
+    gap: 16px;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+  }
+
+  .gallery-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 18px;
+  }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  .video-card video {
+    width: 100%;
+    border-radius: 18px;
+    background: #000;
+  }
+
   .person-contact {
-    max-width: 760px;
+    max-width: 780px;
     width: 100%;
     margin: 0 auto;
   }
 
-  .person-contact h2 {
-    margin-bottom: 10px;
-  }
-
-  .person-contact-note {
-    color: var(--muted);
-    margin-bottom: 16px;
-  }
+  .person-contact h2 { margin-bottom: 10px; }
+  .person-contact-note { color: var(--muted); margin-bottom: 16px; }
 
   .contact-card {
     display: grid;
@@ -170,10 +296,7 @@ layout: default
     padding: 24px;
   }
 
-  .field-label {
-    margin-bottom: 8px;
-    font-weight: 700;
-  }
+  .field-label { margin-bottom: 8px; font-weight: 700; }
 
   .field-input {
     width: 100%;
@@ -196,15 +319,25 @@ layout: default
     cursor: pointer;
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 860px) {
+    .person-hero-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .person-hero-media img {
+      max-height: 360px;
+    }
+
     .person-content,
-    .contact-card {
+    .contact-card,
+    .person-hero-info {
       padding: 18px;
       border-radius: 18px;
     }
 
-    .person-featured img {
-      border-radius: 18px;
+    .fact-row {
+      grid-template-columns: 1fr;
+      gap: 6px;
     }
   }
 </style>
