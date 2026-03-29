@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.name }} | {{ site.title }}</title>
+  <meta name="description" content="{{ page.name }} - {{ site.title }}">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Reset & Tokens ─────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --font-body:    'Inter', sans-serif;
+      --font-display: 'Instrument Serif', serif;
+      --text-sm:   clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg:   clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl:   clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --space-2:  0.5rem;  --space-3:  0.75rem; --space-4:  1rem;
+      --space-6:  1.5rem;  --space-8:  2rem;    --space-12: 3rem;
+      --space-16: 4rem;
+      --radius-sm: 0.375rem; --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;  --radius-full: 9999px;
+      --shadow-sm: 0 1px 2px oklch(0.2 0.01 80 / 0.06);
+      --shadow-md: 0 4px 12px oklch(0.2 0.01 80 / 0.08);
+      --transition: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    :root, [data-theme="light"] {
+      --color-bg:       #f7f6f2;
+      --color-surface:  #ffffff;
+      --color-border:   #d4d1ca;
+      --color-divider:  #dcd9d5;
+      --color-text:     #28251d;
+      --color-muted:    #7a7974;
+      --color-faint:    #bab9b4;
+      --color-primary:  #01696f;
+      --color-primary-h:#0c4e54;
+      --color-primary-hl:#cedcd8;
+      --color-inverse:  #ffffff;
+    }
+    [data-theme="dark"] {
+      --color-bg:       #171614;
+      --color-surface:  #1c1b19;
+      --color-border:   #393836;
+      --color-divider:  #262523;
+      --color-text:     #cdccca;
+      --color-muted:    #797876;
+      --color-faint:    #5a5957;
+      --color-primary:  #4f98a3;
+      --color-primary-h:#227f8b;
+      --color-primary-hl:#313b3b;
+      --color-inverse:  #171614;
+    }
+    html  { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body  { font-family: var(--font-body); font-size: var(--text-base);
+            color: var(--color-text); background: var(--color-bg); min-height: 100dvh;
+            display: flex; flex-direction: column; line-height: 1.6; }
+    img, video { display: block; max-width: 100%; height: auto; }
+    a { color: var(--color-primary); text-decoration: none;
+        transition: color var(--transition); }
+    a:hover { color: var(--color-primary-h); }
+    button { cursor: pointer; border: none; background: none; font: inherit; }
+    :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px;
+                     border-radius: var(--radius-sm); }
+
+    /* ── Site Header ────────────────────────────── */
+    .site-header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: var(--shadow-sm);
+    }
+    .header-inner {
+      max-width: 1100px; margin-inline: auto;
+      padding: var(--space-3) var(--space-6);
+      display: flex; align-items: center; justify-content: space-between;
+      gap: var(--space-4);
+    }
+    .site-logo { display: flex; align-items: center; gap: var(--space-2);
+                 text-decoration: none; }
+    .site-logo svg { flex-shrink: 0; }
+    .site-logo-text { font-family: var(--font-display);
+                      font-size: var(--text-lg); color: var(--color-text); }
+    .header-nav { display: flex; align-items: center; gap: var(--space-6); }
+    .header-nav a { font-size: var(--text-sm); color: var(--color-muted);
+                    font-weight: 500; transition: color var(--transition); }
+    .header-nav a:hover { color: var(--color-text); }
+    .theme-toggle {
+      width: 36px; height: 36px; border-radius: var(--radius-full);
+      background: var(--color-bg); color: var(--color-muted);
+      display: flex; align-items: center; justify-content: center;
+      transition: background var(--transition), color var(--transition);
+      border: 1px solid var(--color-border);
+    }
+    .theme-toggle:hover { color: var(--color-text); background: var(--color-primary-hl); }
+
+    /* ── Page Hero ──────────────────────────────── */
+    .person-hero {
+      background: var(--color-surface);
+      border-bottom: 1px solid var(--color-divider);
+      padding: var(--space-12) var(--space-6);
+    }
+    .person-hero-inner {
+      max-width: 900px; margin-inline: auto;
+      display: flex; align-items: flex-start;
+      gap: var(--space-8); flex-wrap: wrap;
+    }
+    .person-avatar {
+      width: 140px; height: 140px; flex-shrink: 0;
+      border-radius: var(--radius-lg);
+      object-fit: cover;
+      box-shadow: var(--shadow-md);
+      background: var(--color-bg);
+    }
+    .person-avatar-placeholder {
+      width: 140px; height: 140px; flex-shrink: 0;
+      border-radius: var(--radius-lg);
+      background: var(--color-primary-hl);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--color-primary); font-family: var(--font-display);
+      font-size: 3rem;
+    }
+    .person-info { flex: 1; min-width: 200px; }
+    .person-name {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      line-height: 1.15; margin-bottom: var(--space-2);
+      color: var(--color-text);
+    }
+    .person-tags { display: flex; flex-wrap: wrap; gap: var(--space-2);
+                   margin-bottom: var(--space-4); }
+    .tag {
+      font-size: 0.8rem; font-weight: 500;
+      background: var(--color-primary-hl);
+      color: var(--color-primary);
+      padding: 2px var(--space-3); border-radius: var(--radius-full);
+    }
+    .person-contacts { display: flex; flex-direction: column; gap: var(--space-2);
+                       margin-bottom: var(--space-4); }
+    .contact-item { display: flex; align-items: center; gap: var(--space-2);
+                    font-size: var(--text-sm); color: var(--color-muted); }
+    .contact-item svg { width: 16px; height: 16px; flex-shrink: 0; color: var(--color-primary); }
+    .contact-item a { color: var(--color-muted); }
+    .contact-item a:hover { color: var(--color-primary); }
+    .social-links { display: flex; gap: var(--space-2); }
+    .social-btn {
+      width: 36px; height: 36px;
+      border-radius: var(--radius-md);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--color-muted);
+      transition: all var(--transition);
+    }
+    .social-btn:hover { background: var(--color-primary-hl);
+                        color: var(--color-primary); border-color: var(--color-primary-hl); }
+    .social-btn svg { width: 16px; height: 16px; }
+
+    /* ── Main Content ───────────────────────────── */
+    .page-content { max-width: 900px; margin-inline: auto;
+                    padding: var(--space-12) var(--space-6); flex: 1; }
+    .section-label {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--color-faint);
+      margin-bottom: var(--space-4);
+    }
+
+    /* ── Media Grid ─────────────────────────────── */
+    .media-section { margin-bottom: var(--space-12); }
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr));
+      gap: var(--space-4);
+    }
+    .media-item { border-radius: var(--radius-md); overflow: hidden;
+                  background: var(--color-surface);
+                  border: 1px solid var(--color-border);
+                  box-shadow: var(--shadow-sm); }
+    .media-item img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+    .media-item video { width: 100%; aspect-ratio: 16/9; }
+
+    /* ── Bio / Content ──────────────────────────── */
+    .bio-section { margin-bottom: var(--space-12); }
+    .bio-content { line-height: 1.8; color: var(--color-text); max-width: 65ch; }
+    .bio-content p + p { margin-top: var(--space-4); }
+    .bio-content h2, .bio-content h3 {
+      font-family: var(--font-display);
+      color: var(--color-text); margin: var(--space-6) 0 var(--space-2);
+    }
+
+    /* ── Contact Form ───────────────────────────── */
+    .contact-section {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-8);
+      margin-top: var(--space-12);
+      box-shadow: var(--shadow-sm);
+    }
+    .contact-section h2 {
+      font-family: var(--font-display); font-size: var(--text-lg);
+      margin-bottom: var(--space-2); color: var(--color-text);
+    }
+    .contact-section p.lead {
+      color: var(--color-muted); font-size: var(--text-sm);
+      margin-bottom: var(--space-6);
+    }
+    .form-row { display: grid; gap: var(--space-4);
+                grid-template-columns: 1fr 1fr; }
+    @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+    .form-group { display: flex; flex-direction: column; gap: var(--space-2); }
+    .form-group.full { grid-column: 1 / -1; }
+    label { font-size: var(--text-sm); font-weight: 500;
+            color: var(--color-text); }
+    input[type="text"], input[type="email"], textarea {
+      font: inherit; font-size: var(--text-sm);
+      width: 100%; padding: var(--space-3) var(--space-4);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      color: var(--color-text);
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
+      outline: none; border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.15);
+    }
+    textarea { resize: vertical; min-height: 120px; }
+    .btn-submit {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      padding: var(--space-3) var(--space-6);
+      background: var(--color-primary); color: var(--color-inverse);
+      border-radius: var(--radius-md); font-size: var(--text-sm);
+      font-weight: 600; cursor: pointer; border: none;
+      transition: background var(--transition), transform 80ms;
+      margin-top: var(--space-4);
+    }
+    .btn-submit:hover { background: var(--color-primary-h); }
+    .btn-submit:active { transform: scale(0.98); }
+    /* Formspree hidden field */
+    input[name="_gotcha"] { display: none; }
+
+    /* ── Back Button ────────────────────────────── */
+    .back-link {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      font-size: var(--text-sm); color: var(--color-muted);
+      margin-bottom: var(--space-6);
+      transition: color var(--transition);
+    }
+    .back-link:hover { color: var(--color-primary); }
+
+    /* ── Footer ─────────────────────────────────── */
+    .site-footer {
+      border-top: 1px solid var(--color-divider);
+      background: var(--color-surface);
+      padding: var(--space-8) var(--space-6);
+      margin-top: auto;
+    }
+    .footer-inner {
+      max-width: 1100px; margin-inline: auto;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: var(--space-4); flex-wrap: wrap;
+    }
+    .footer-copy { font-size: var(--text-sm); color: var(--color-faint); }
+    .footer-nav { display: flex; gap: var(--space-6); }
+    .footer-nav a { font-size: var(--text-sm); color: var(--color-muted);
+                    transition: color var(--transition); }
+    .footer-nav a:hover { color: var(--color-primary); }
+
+    /* ── Responsive nav ─────────────────────────── */
+    @media (max-width: 600px) {
+      .header-nav .nav-links { display: none; }
+      .person-hero-inner { flex-direction: column; align-items: center; text-align: center; }
+      .person-contacts, .social-links { align-items: center; justify-content: center; }
+      .contact-section { padding: var(--space-6) var(--space-4); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════════════════ HEADER ════════════════ -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+
+      <!-- Logo / Site Name — edit site.title in _config.yml -->
+      <a href="/" class="site-logo" aria-label="{{ site.title }} home">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+          <rect width="28" height="28" rx="7" fill="var(--color-primary)"/>
+          <circle cx="14" cy="11" r="4" fill="white"/>
+          <path d="M7 22c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="site-logo-text">{{ site.title }}</span>
+      </a>
+
+      <nav class="header-nav" aria-label="Main navigation">
+        <div class="nav-links">
+          <a href="/">Directory</a>
+          <a href="/contact">Contact Us</a>
+        </div>
+        <!-- Dark/light mode toggle -->
+        <button class="theme-toggle" data-theme-toggle
+                aria-label="Switch to dark mode"
+                title="Toggle dark/light mode">
+          <!-- Moon icon (shows in light mode) -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- ════════════════ PERSON HERO ════════════════ -->
+  <section class="person-hero" aria-labelledby="person-name">
+
+    <div class="person-hero-inner">
+
+      <!-- Profile image — set profile_image in the page's front matter -->
+      {% if page.profile_image %}
+        <img class="person-avatar"
+             src="{{ page.profile_image }}"
+             alt="Photo of {{ page.name }}"
+             width="140" height="140" loading="eager">
+      {% else %}
+        <div class="person-avatar-placeholder" aria-hidden="true">
+          {{ page.name | slice: 0 }}
+        </div>
+      {% endif %}
+
+      <div class="person-info">
+        <h1 class="person-name" id="person-name">{{ page.name }}</h1>
+
+        <!-- Optional tag / role — set role: "Photographer" in front matter -->
+        {% if page.role %}
+        <div class="person-tags">
+          <span class="tag">{{ page.role }}</span>
+        </div>
+        {% endif %}
+
+        <!-- Contact details -->
+        <div class="person-contacts">
+          {% if page.email %}
+          <div class="contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" aria-hidden="true">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="m22 7-10 7L2 7"/>
+            </svg>
+            <a href="mailto:{{ page.email }}">{{ page.email }}</a>
+          </div>
+          {% endif %}
+
+          {% if page.phone %}
+          <div class="contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12 19.79 19.79 0 0 1 1.05 3.4 2 2 0 0 1 3 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21 16z"/>
+            </svg>
+            <span>{{ page.phone }}</span>
+          </div>
+          {% endif %}
+
+          {% if page.location %}
+          <div class="contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" aria-hidden="true">
+              <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span>{{ page.location }}</span>
+          </div>
+          {% endif %}
+        </div>
+
+        <!-- Social links -->
+        <div class="social-links" aria-label="Social media links">
+          {% if page.instagram %}
+          <a href="{{ page.instagram }}" class="social-btn" target="_blank"
+             rel="noopener noreferrer" aria-label="{{ page.name }} on Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+          {% endif %}
+
+          {% if page.facebook %}
+          <a href="{{ page.facebook }}" class="social-btn" target="_blank"
+             rel="noopener noreferrer" aria-label="{{ page.name }} on Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" aria-hidden="true">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+          {% endif %}
+
+          {% if page.linkedin %}
+          <a href="{{ page.linkedin }}" class="social-btn" target="_blank"
+             rel="noopener noreferrer" aria-label="{{ page.name }} on LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+          {% endif %}
+
+          {% if page.twitter %}
+          <a href="{{ page.twitter }}" class="social-btn" target="_blank"
+             rel="noopener noreferrer" aria-label="{{ page.name }} on X/Twitter">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.261 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+          {% endif %}
+        </div>
+
+      </div><!-- /person-info -->
+    </div><!-- /person-hero-inner -->
+  </section>
+
+  <!-- ════════════════ MAIN CONTENT ════════════════ -->
+  <main class="page-content" id="main-content">
+
+    <a href="/" class="back-link" aria-label="Back to directory">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+      Back to Directory
+    </a>
+
+    <!-- About / Bio section (Markdown body from the .md file) -->
+    {% if content != "" and content != "<p></p>" %}
+    <section class="bio-section" aria-labelledby="bio-heading">
+      <p class="section-label" id="bio-heading">About</p>
+      <div class="bio-content">{{ content }}</div>
+    </section>
+    {% endif %}
+
+    <!-- Media gallery: images listed as an array in front matter
+         Example front matter:
+         images:
+           - https://res.cloudinary.com/yourname/image/upload/photo1.jpg
+           - https://res.cloudinary.com/yourname/image/upload/photo2.jpg
+         videos:
+           - https://res.cloudinary.com/yourname/video/upload/clip1.mp4
+    -->
+    {% if page.images or page.videos %}
+    <section class="media-section" aria-labelledby="media-heading">
+      <p class="section-label" id="media-heading">Gallery</p>
+      <div class="media-grid">
+        {% for image in page.images %}
+        <div class="media-item">
+          <img src="{{ image }}" alt="Photo of {{ page.name }}"
+               loading="lazy" width="400" height="300">
+        </div>
+        {% endfor %}
+        {% for video in page.videos %}
+        <div class="media-item">
+          <video controls preload="none"
+                 aria-label="Video featuring {{ page.name }}">
+            <source src="{{ video }}" type="video/mp4">
+            Your browser does not support video.
+          </video>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ══════════ CONTACT FORM (Formspree) ══════════
+         Replace YOUR_FORM_ID below with your actual Formspree ID
+         e.g.  action="https://formspree.io/f/abcd1234"
+    ═════════════════════════════════════════════════ -->
+    <section class="contact-section" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Send a Message to {{ page.name }}</h2>
+      <p class="lead">Fill in the form below and your message will be
+         forwarded directly.</p>
+
+      <form action="https://formspree.io/f/mvzvkgjg" method="POST"
+            aria-label="Contact form for {{ page.name }}">
+
+        <!-- Honeypot — Formspree spam filter, keep hidden -->
+        <input type="text" name="_gotcha" tabindex="-1" aria-hidden="true">
+
+        <!-- Tell Formspree which person this message is about -->
+        <input type="hidden" name="_subject"
+               value="Message about {{ page.name }} from directory">
+
+        <!-- After submit, send back to this person's page -->
+        <input type="hidden" name="_next"
+               value="{{ page.url | absolute_url }}?sent=true">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="sender-name">Your Name <span aria-hidden="true">*</span></label>
+            <input type="text" id="sender-name" name="name"
+                   placeholder="Jane Smith" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="sender-email">Your Email <span aria-hidden="true">*</span></label>
+            <input type="email" id="sender-email" name="email"
+                   placeholder="jane@example.com" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="sender-phone">Phone (optional)</label>
+            <input type="text" id="sender-phone" name="phone"
+                   placeholder="+61 4xx xxx xxx" autocomplete="tel">
+          </div>
+          <div class="form-group">
+            <label for="regarding">Regarding (optional)</label>
+            <input type="text" id="regarding" name="regarding"
+                   placeholder="Inquiry / Collaboration / Other">
+          </div>
+          <div class="form-group full">
+            <label for="message">Message <span aria-hidden="true">*</span></label>
+            <textarea id="message" name="message"
+                      placeholder="Write your message here…" required></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/>
+          </svg>
+          Send Message
+        </button>
+
+      </form>
+    </section><!-- /contact-section -->
+
+  </main>
+
+  <!-- ════════════════ FOOTER ════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <p class="footer-copy">
+        &copy; {{ site.time | date: "%Y" }} {{ site.title }}. All rights reserved.
+      </p>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="/">Directory</a>
+        <a href="/contact">Contact Us</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- ════════ Dark/Light Toggle Script ════════ -->
+  <script>
+    (function () {
+      const toggle = document.querySelector('[data-theme-toggle]');
+      const html   = document.documentElement;
+      const moonSVG = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+      const sunSVG  = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
+
+      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      html.setAttribute('data-theme', theme);
+      if (toggle) toggle.innerHTML = theme === 'dark' ? sunSVG : moonSVG;
+
+      if (toggle) {
+        toggle.addEventListener('click', function () {
+          theme = theme === 'dark' ? 'light' : 'dark';
+          html.setAttribute('data-theme', theme);
+          toggle.setAttribute('aria-label', 'Switch to ' + (theme === 'dark' ? 'light' : 'dark') + ' mode');
+          toggle.innerHTML = theme === 'dark' ? sunSVG : moonSVG;
+        });
+      }
+
+      // Show success message if redirected back after submit
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('sent') === 'true') {
+        const form = document.querySelector('form');
+        if (form) {
+          form.innerHTML = '<div style="text-align:center;padding:2rem;color:var(--color-primary)"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin:0 auto 1rem"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><h3 style="font-family:var(--font-display);font-size:var(--text-lg);margin-bottom:.5rem">Message sent!</h3><p style="color:var(--color-muted)">Thank you. Your message has been forwarded.</p></div>';
+        }
+      }
+    })();
+  </script>
+
+</body>
+</html>
