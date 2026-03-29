@@ -8,7 +8,7 @@ permalink: /contact/
 
 اگر سوال، پیشنهاد یا فایل برای ما دارید، از فرم زیر استفاده کنید.
 
-<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" enctype="multipart/form-data" style="display:grid;gap:16px;margin-top:24px;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:24px;">
+<form action="https://formspree.io/f/mvzvkgjg" method="POST" enctype="multipart/form-data" style="display:grid;gap:16px;margin-top:24px;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:24px;">
   <input type="hidden" name="_subject" value="پیام جدید از صفحه تماس">
   <input type="hidden" name="page_url" value="/contact/">
   <input type="hidden" name="page_title" value="contact">
