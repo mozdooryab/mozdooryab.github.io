@@ -32,7 +32,7 @@ content:
           - { name: body, label: متن, type: rich-text }
 
       - name: contact
-        label: ارتباط با ما
+        label: تماس با ما
         path: contact.md
         fields:
           - { name: title, label: عنوان, type: string }
