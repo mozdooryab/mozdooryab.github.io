@@ -9,22 +9,27 @@ content:
     path: _australia
     filename: "{fields.slug}.md"
     view:
-      fields: [featured_image, name_fa, city]
+      fields: [featured_image, name_fa, city, role]
     fields:
       - { name: layout, label: Layout, type: string, default: "person", hidden: true }
       - { name: title, label: Title, type: string, required: false }
+
       - { name: name_fa, label: نام فارسی, type: string, required: true }
       - { name: name_en, label: نام انگلیسی, type: string, required: true }
       - { name: slug, label: اسلاگ انگلیسی, type: string, required: true }
+
       - { name: city, label: شهر, type: string, required: false }
       - { name: role, label: شغل / عنوان, type: string, required: false }
+
       - { name: email, label: ایمیل, type: string, required: false }
       - { name: phone, label: تلفن, type: string, required: false }
-      - { name: featured_image, label: عکس شاخص, type: image, required: false }
+      - { name: website, label: وب‌سایت, type: string, required: false }
+
       - { name: instagram, label: اینستاگرام, type: string, required: false }
       - { name: facebook, label: فیسبوک, type: string, required: false }
       - { name: telegram, label: تلگرام, type: string, required: false }
-      - { name: website, label: وب‌سایت, type: string, required: false }
+
+      - { name: featured_image, label: عکس شاخص, type: image, required: false }
 
       - name: gallery_images
         label: گالری عکس
@@ -39,6 +44,13 @@ content:
         required: false
         fields:
           - { name: video_url, label: لینک ویدیو, type: string }
+
+      - name: tags
+        label: تگ‌ها
+        type: list
+        required: false
+        fields:
+          - { name: tag, label: تگ, type: string }
 
       - { name: body, label: متن و محتوا, type: rich-text }
 
