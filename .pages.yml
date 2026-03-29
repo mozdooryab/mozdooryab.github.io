@@ -10,37 +10,48 @@ content:
     filename: "{fields.slug}.md"
     view:
       fields: [featured_image, name_fa, city]
-fields:
-  - { name: layout, label: Layout, type: string, default: "person", hidden: true }
-  - { name: title, label: Title, type: string, required: false }
-  - { name: name_fa, label: نام فارسی, type: string, required: true }
-  - { name: name_en, label: نام انگلیسی, type: string, required: true }
-  - { name: slug, label: اسلاگ انگلیسی, type: string, required: true }
-  - { name: city, label: شهر, type: string, required: false }
-  - { name: role, label: شغل / عنوان, type: string, required: false }
-  - { name: email, label: ایمیل, type: string, required: false }
-  - { name: phone, label: تلفن, type: string, required: false }
-  - { name: featured_image, label: عکس شاخص, type: image, required: false }
-  - { name: instagram, label: اینستاگرام, type: string, required: false }
-  - { name: facebook, label: فیسبوک, type: string, required: false }
-  - { name: telegram, label: تلگرام, type: string, required: false }
-  - { name: website, label: وب‌سایت, type: string, required: false }
-
-  - name: gallery_images
-    label: گالری عکس
-    type: list
-    required: false
     fields:
-      - { name: image, label: عکس, type: image }
+      - { name: layout, label: Layout, type: string, default: "person", hidden: true }
+      - { name: title, label: Title, type: string, required: false }
+      - { name: name_fa, label: نام فارسی, type: string, required: true }
+      - { name: name_en, label: نام انگلیسی, type: string, required: true }
+      - { name: slug, label: اسلاگ انگلیسی, type: string, required: true }
+      - { name: city, label: شهر, type: string, required: false }
+      - { name: role, label: شغل / عنوان, type: string, required: false }
+      - { name: email, label: ایمیل, type: string, required: false }
+      - { name: phone, label: تلفن, type: string, required: false }
+      - { name: featured_image, label: عکس شاخص, type: image, required: false }
+      - { name: instagram, label: اینستاگرام, type: string, required: false }
+      - { name: facebook, label: فیسبوک, type: string, required: false }
+      - { name: telegram, label: تلگرام, type: string, required: false }
+      - { name: website, label: وب‌سایت, type: string, required: false }
 
-  - name: gallery_videos
-    label: گالری ویدیو
-    type: list
-    required: false
-    fields:
-      - { name: video_url, label: لینک ویدیو, type: string }
+      - name: gallery_images
+        label: گالری عکس
+        type: list
+        required: false
+        fields:
+          - { name: image, label: عکس, type: image }
 
-  - { name: body, label: متن و محتوا, type: rich-text }
+      - name: gallery_videos
+        label: گالری ویدیو
+        type: list
+        required: false
+        fields:
+          - { name: video_url, label: لینک ویدیو, type: string }
+
+      - { name: body, label: متن و محتوا, type: rich-text }
+
+  - name: pages
+    label: صفحه‌ها
+    type: file
+    files:
+      - name: about
+        label: درباره ما
+        path: about.md
+        fields:
+          - { name: title, label: عنوان, type: string }
+          - { name: body, label: متن, type: rich-text }
 
       - name: contact
         label: ارتباط با ما
