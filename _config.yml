@@ -1,9 +1,15 @@
-title: My Directory Site
-description: A people directory
-theme: minima
-plugins:
-  - jekyll-feed
+title: Australia Directory
+description: فهرست فارسی
+lang: fa
+markdown: kramdown
+
 collections:
-  people:
+  australia:
     output: true
-    permalink: /people/:name/
+    permalink: /australia/:name/
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
