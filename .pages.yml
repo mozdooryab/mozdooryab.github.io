@@ -1,0 +1,18 @@
+media:
+  input: assets/uploads
+  output: /assets/uploads
+
+content:
+  - name: australia
+    label: Australia
+    type: collection
+    path: _australia
+    filename: "{fields.slug}.md"
+    fields:
+      - { name: layout, type: string, default: person, hidden: true }
+      - { name: name_fa, label: Name FA, type: string }
+      - { name: name_en, label: Name EN, type: string }
+      - { name: slug, label: Slug, type: string }
+      - { name: city, label: City, type: string, required: false }
+      - { name: featured_image, label: Featured Image, type: image, required: false }
+      - { name: body, label: Body, type: rich-text }
