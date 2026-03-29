@@ -4,7 +4,7 @@ media:
 
 content:
   - name: australia
-    label: افراد
+    label: Australia
     type: collection
     path: _australia
     filename: "{fields.slug}.md"
@@ -14,60 +14,43 @@ content:
       - { name: layout, label: Layout, type: string, default: "person", hidden: true }
       - { name: title, label: Title, type: string, required: false }
 
-      - { name: name_fa, label: نام فارسی, type: string, required: true }
-      - { name: name_en, label: نام انگلیسی, type: string, required: true }
-      - { name: slug, label: اسلاگ انگلیسی, type: string, required: true }
+      - { name: name_fa, label: Name FA, type: string, required: true }
+      - { name: name_en, label: Name EN, type: string, required: true }
+      - { name: slug, label: Slug, type: string, required: true }
 
-      - { name: city, label: شهر, type: string, required: false }
-      - { name: role, label: شغل / عنوان, type: string, required: false }
+      - { name: city, label: City, type: string, required: false }
+      - { name: role, label: Role, type: string, required: false }
 
-      - { name: email, label: ایمیل, type: string, required: false }
-      - { name: phone, label: تلفن, type: string, required: false }
-      - { name: website, label: وب‌سایت, type: string, required: false }
+      - { name: email, label: Email, type: string, required: false }
+      - { name: phone, label: Phone, type: string, required: false }
+      - { name: website, label: Website, type: string, required: false }
 
-      - { name: instagram, label: اینستاگرام, type: string, required: false }
-      - { name: facebook, label: فیسبوک, type: string, required: false }
-      - { name: telegram, label: تلگرام, type: string, required: false }
+      - { name: instagram, label: Instagram, type: string, required: false }
+      - { name: facebook, label: Facebook, type: string, required: false }
+      - { name: telegram, label: Telegram, type: string, required: false }
 
-      - { name: featured_image, label: عکس شاخص, type: image, required: false }
+      - { name: featured_image, label: Featured Image, type: image, required: false }
 
-      - name: gallery_images
-        label: گالری عکس
-        type: list
-        required: false
-        fields:
-          - { name: image, label: عکس, type: image }
+      - { name: gallery_images, label: Gallery Images, type: list, required: false }
+      - { name: gallery_videos, label: Gallery Videos, type: list, required: false }
+      - { name: tags, label: Tags, type: list, required: false }
 
-      - name: gallery_videos
-        label: گالری ویدیو
-        type: list
-        required: false
-        fields:
-          - { name: video_url, label: لینک ویدیو, type: string }
-
-      - name: tags
-        label: تگ‌ها
-        type: list
-        required: false
-        fields:
-          - { name: tag, label: تگ, type: string }
-
-      - { name: body, label: متن و محتوا, type: rich-text }
+      - { name: body, label: Body, type: rich-text }
 
   - name: pages
-    label: صفحه‌ها
+    label: Pages
     type: file
     files:
       - name: about
-        label: درباره ما
+        label: About
         path: about.md
         fields:
-          - { name: title, label: عنوان, type: string }
-          - { name: body, label: متن, type: rich-text }
+          - { name: title, label: Title, type: string }
+          - { name: body, label: Body, type: rich-text }
 
       - name: contact
-        label: ارتباط با ما
+        label: Contact
         path: contact.md
         fields:
-          - { name: title, label: عنوان, type: string }
-          - { name: body, label: متن, type: rich-text }
+          - { name: title, label: Title, type: string }
+          - { name: body, label: Body, type: rich-text }
