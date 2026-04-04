@@ -3,7 +3,7 @@ media:
   output: /assets/uploads
 
 content:
-  - name: australia
+  - name: australia2
     label: Australia
     type: collection
     path: _australia
