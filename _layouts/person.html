@@ -2,6 +2,10 @@
 layout: default
 ---
 
+{% if page.published == false %}
+<script>window.location.replace('/');</script>
+{% endif %}
+
 <article class="person-page">
   <header class="person-hero">
     <div class="person-hero-grid">
@@ -44,33 +48,43 @@ layout: default
             </div>
           {% endif %}
 
-          {% if page.linkedin %}
-            <div class="fact-row">
-              <strong>لینکدین</strong>
-              <span>{{ page.linkedin }}</span>
-            </div>
+          {% assign has_social = false %}
+          {% if page.linkedin or page.instagram or page.facebook or page.telegram %}
+            {% assign has_social = true %}
           {% endif %}
 
-          {% if page.instagram %}
-            <div class="fact-row">
-              <strong>آیدی اینستاگرام</strong>
-              <span>{{ page.instagram }}</span>
-            </div>
+          {% if has_social %}
+          <div class="social-grid">
+            {% if page.linkedin %}
+              <div class="fact-row">
+                <strong>لینکدین</strong>
+                <span>{{ page.linkedin }}</span>
+              </div>
+            {% endif %}
+
+            {% if page.instagram %}
+              <div class="fact-row">
+                <strong>آیدی اینستاگرام</strong>
+                <span>{{ page.instagram }}</span>
+              </div>
+            {% endif %}
+
+            {% if page.facebook %}
+              <div class="fact-row">
+                <strong>آیدی فیسبوک</strong>
+                <span>{{ page.facebook }}</span>
+              </div>
+            {% endif %}
+
+            {% if page.telegram %}
+              <div class="fact-row">
+                <strong>آیدی تلگرام</strong>
+                <span>{{ page.telegram }}</span>
+              </div>
+            {% endif %}
+          </div>
           {% endif %}
 
-          {% if page.facebook %}
-            <div class="fact-row">
-              <strong>آیدی فیسبوک</strong>
-              <span>{{ page.facebook }}</span>
-            </div>
-          {% endif %}
-
-          {% if page.telegram %}
-            <div class="fact-row">
-              <strong>آیدی تلگرام</strong>
-              <span>{{ page.telegram }}</span>
-            </div>
-          {% endif %}
         </div>
     
       </div>
@@ -249,7 +263,13 @@ layout: default
   .fact-row strong { color: var(--text); }
   .fact-row span, .fact-row a { color: var(--muted); word-break: break-word; }
 
-  
+  /* ===== سوشال مدیا - دو ستونه در دسکتاپ ===== */
+  .social-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 16px;
+  }
+
   .person-content-wrap {
     display: flex;
     justify-content: center;
@@ -266,77 +286,97 @@ layout: default
 
   .prose p { margin: 0 0 1.2em; }
   .prose h2, .prose h3, .prose h4 { margin-top: 1.8em; margin-bottom: .8em; }
-  .prose ul, .prose ol { margin: 0 0 1.2em; padding-right: 1.4em; }
-  .prose blockquote {
-    margin: 1.5em 0;
-    padding: 12px 16px;
-    border-right: 4px solid var(--primary);
-    background: var(--bg);
-    border-radius: 14px;
-  }
-  .prose img, .prose video {
-    margin: 1.5em auto;
-    border-radius: 18px;
-  }
+  .prose ul, .prose ol { margin: 0 0 1.2em; padding-right: 1.5em; }
 
-  .gallery-section {
-    display: grid;
-    gap: 16px;
+  /* ===== گالری تصاویر ===== */
+  .gallery-section { padding: 0; }
+
+  .gallery-section h2 {
+    margin-bottom: 16px;
+    font-size: 1.3rem;
   }
 
   .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 14px;
+  }
+
+  .gallery-card {
+    margin: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--border);
   }
 
   .gallery-card img {
     width: 100%;
-    height: 220px;
+    height: 200px;
     object-fit: cover;
-    border-radius: 18px;
+    display: block;
   }
 
+  /* ===== ویدیوها ===== */
   .video-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
+  }
+
+  .video-card {
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--border);
   }
 
   .video-card video {
     width: 100%;
-    border-radius: 18px;
-    background: #000;
+    display: block;
   }
 
-  .person-contact {
-    max-width: 780px;
-    width: 100%;
-    margin: 0 auto;
-  }
+  /* ===== فرم تماس ===== */
+  .person-contact h2 { margin-bottom: 8px; font-size: 1.3rem; }
 
-  .person-contact h2 { margin-bottom: 10px; }
-  .person-contact-note { color: var(--muted); margin-bottom: 16px; }
+  .person-contact-note {
+    color: var(--muted);
+    font-size: .92rem;
+    margin-bottom: 18px;
+  }
 
   .contact-card {
-    display: grid;
-    gap: 16px;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 24px;
+    border-radius: 24px;
+    padding: 28px;
+    display: grid;
+    gap: 18px;
+    max-width: 560px;
   }
 
-  .field-label { margin-bottom: 8px; font-weight: 700; }
+  .field-label {
+    font-size: .9rem;
+    color: var(--muted);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
 
   .field-input {
     width: 100%;
-    padding: 14px 16px;
-    border: 1px solid var(--border);
-    border-radius: 14px;
+    padding: 12px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
     background: var(--bg);
     color: var(--text);
-    font: inherit;
+    font-size: 1rem;
+    transition: border-color .2s;
+    resize: vertical;
+  }
+
+  .field-input:focus {
+    outline: none;
+    border-color: var(--primary);
   }
 
   .submit-btn {
@@ -369,6 +409,11 @@ layout: default
     .fact-row {
       grid-template-columns: 1fr;
       gap: 6px;
+    }
+
+    /* ===== سوشال مدیا - تک ستونه در موبایل ===== */
+    .social-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>
