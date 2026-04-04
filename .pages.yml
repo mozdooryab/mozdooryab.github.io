@@ -17,7 +17,7 @@ content:
         default: "person"
         hidden: true
       - name: published
-        label: Published (true/false)
+        label: Published true or false
         type: string
         default: "true"
       - name: name_fa
@@ -58,10 +58,6 @@ content:
         required: false
       - name: facebook
         label: Facebook
-        type: string
-        required: false
-      - name: telegram
-        label: Telegram
         type: string
         required: false
       - name: tags_text
