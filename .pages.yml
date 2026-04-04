@@ -3,11 +3,12 @@ media:
   output: /assets/uploads
 
 content:
-  - name: australia2
+  - name: australia
     label: Australia
     type: collection
     path: _australia
     filename: "{fields.slug}.md"
+    merge: true
     view:
       fields: [featured_image, name_fa, city, role]
     fields:
