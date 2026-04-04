@@ -152,8 +152,8 @@ layout: default
   <!-- Lightbox -->
   <div id="lightbox" onclick="closeLightbox(event)">
     <button class="lb-close" onclick="closeLightbox()">✕</button>
-    <button class="lb-prev" onclick="changeImage(-1)">&#8249;</button>
-    <button class="lb-next" onclick="changeImage(1)">&#8250;</button>
+    <button class="lb-prev" onclick="changeImage(1)">&#8249;</button>
+    <button class="lb-next" onclick="changeImage(-1)">&#8250;</button>
     <img id="lb-img" src="" alt="">
   </div>
 
@@ -607,7 +607,7 @@ layout: default
     const lb = document.getElementById('lightbox');
     if (!lb.classList.contains('active')) return;
     if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowLeft') changeImage(-1);
-    if (e.key === 'ArrowRight') changeImage(1);
+    if (e.key === 'ArrowLeft') changeImage(1);
+    if (e.key === 'ArrowRight') changeImage(-1);
   });
 </script>
