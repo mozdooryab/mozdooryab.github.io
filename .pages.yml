@@ -48,12 +48,20 @@ content:
         label: Phone
         type: string
         required: false
+      - name: website
+        label: Website
+        type: string
+        required: false
       - name: instagram
         label: Instagram
         type: string
         required: false
       - name: facebook
         label: Facebook
+        type: string
+        required: false
+      - name: telegram
+        label: Telegram
         type: string
         required: false
       - name: tags_text
