@@ -48,10 +48,6 @@ content:
         label: Phone
         type: string
         required: false
-      - name: linkedin
-        label: Linkedin
-        type: string
-        required: false
       - name: instagram
         label: Instagram
         type: string
