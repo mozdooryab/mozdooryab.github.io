@@ -52,11 +52,30 @@ layout: default
           {% endif %}
         </div>
 
-        <div class="person-links">
-          {% if page.instagram %}<a href="{{ page.instagram }}" target="_blank" rel="noopener noreferrer">Instagram</a>{% endif %}
-          {% if page.facebook %}<a href="{{ page.facebook }}" target="_blank" rel="noopener noreferrer">Facebook</a>{% endif %}
-          {% if page.telegram %}<a href="{{ page.telegram }}" target="_blank" rel="noopener noreferrer">Telegram</a>{% endif %}
+          {% if page.instagram %}
+            <div class="fact-row">
+              <strong>آیدی اینستاگرام</strong>
+              <span><a href="{{ page.website }}" target="_blank" rel="noopener noreferrer">{{ page.website }}</a></span>
+            </div>
+          {% endif %}
         </div>
+
+          {% if page.facebook %}
+            <div class="fact-row">
+              <strong>آیدی فیسبوک</strong>
+              <span><a href="{{ page.website }}" target="_blank" rel="noopener noreferrer">{{ page.website }}</a></span>
+            </div>
+          {% endif %}
+        </div>
+
+          {% if page.telegram %}
+            <div class="fact-row">
+              <strong>آیدی تلگرام</strong>
+              <span><a href="{{ page.website }}" target="_blank" rel="noopener noreferrer">{{ page.website }}</a></span>
+            </div>
+          {% endif %}
+        </div>
+    
       </div>
     </div>
   </header>
@@ -233,19 +252,7 @@ layout: default
   .fact-row strong { color: var(--text); }
   .fact-row span, .fact-row a { color: var(--muted); word-break: break-word; }
 
-  .person-links {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-
-  .person-links a {
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    padding: 8px 12px;
-    background: var(--bg);
-  }
-
+  
   .person-content-wrap {
     display: flex;
     justify-content: center;
