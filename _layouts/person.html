@@ -2,7 +2,7 @@
 layout: default
 ---
 
-{% if page.published == false %}
+{% if page.published == "no" %}
 <script>window.location.replace('/');</script>
 {% endif %}
 
@@ -64,21 +64,21 @@ layout: default
 
             {% if page.instagram %}
               <div class="fact-row">
-                <strong>آیدی اینستاگرام</strong>
+                <strong>اینستاگرام</strong>
                 <span>{{ page.instagram }}</span>
               </div>
             {% endif %}
 
             {% if page.facebook %}
               <div class="fact-row">
-                <strong>آیدی فیسبوک</strong>
+                <strong>فیسبوک</strong>
                 <span>{{ page.facebook }}</span>
               </div>
             {% endif %}
 
             {% if page.telegram %}
               <div class="fact-row">
-                <strong>آیدی تلگرام</strong>
+                <strong>تلگرام</strong>
                 <span>{{ page.telegram }}</span>
               </div>
             {% endif %}
@@ -86,7 +86,6 @@ layout: default
           {% endif %}
 
         </div>
-    
       </div>
     </div>
   </header>
@@ -97,34 +96,118 @@ layout: default
     </div>
   </section>
 
-  {% if page.gallery_images and page.gallery_images.size > 0 %}
+  {% assign has_gallery = false %}
+  {% if page.gallery_image_1 and page.gallery_image_1 != '' %}{% assign has_gallery = true %}{% endif %}
+  {% if page.gallery_image_2 and page.gallery_image_2 != '' %}{% assign has_gallery = true %}{% endif %}
+  {% if page.gallery_image_3 and page.gallery_image_3 != '' %}{% assign has_gallery = true %}{% endif %}
+  {% if page.gallery_image_4 and page.gallery_image_4 != '' %}{% assign has_gallery = true %}{% endif %}
+
+  {% if has_gallery %}
   <section class="gallery-section">
     <h2>گالری تصاویر</h2>
     <div class="gallery-grid">
-      {% for item in page.gallery_images %}
-        {% if item.image %}
-          <figure class="gallery-card">
-            <img src="{{ item.image }}" alt="{{ page.name_fa }} gallery image" loading="lazy">
-          </figure>
-        {% endif %}
-      {% endfor %}
+      {% if page.gallery_image_1 and page.gallery_image_1 != '' %}
+        <figure class="gallery-card">
+          <img src="{{ page.gallery_image_1 }}" alt="{{ page.name_fa }}" loading="lazy">
+        </figure>
+      {% endif %}
+      {% if page.gallery_image_2 and page.gallery_image_2 != '' %}
+        <figure class="gallery-card">
+          <img src="{{ page.gallery_image_2 }}" alt="{{ page.name_fa }}" loading="lazy">
+        </figure>
+      {% endif %}
+      {% if page.gallery_image_3 and page.gallery_image_3 != '' %}
+        <figure class="gallery-card">
+          <img src="{{ page.gallery_image_3 }}" alt="{{ page.name_fa }}" loading="lazy">
+        </figure>
+      {% endif %}
+      {% if page.gallery_image_4 and page.gallery_image_4 != '' %}
+        <figure class="gallery-card">
+          <img src="{{ page.gallery_image_4 }}" alt="{{ page.name_fa }}" loading="lazy">
+        </figure>
+      {% endif %}
+      {% if page.gallery_image_5 and page.gallery_image_5 != '' %}
+        <figure class="gallery-card">
+          <img src="{{ page.gallery_image_5 }}" alt="{{ page.name_fa }}" loading="lazy">
+        </figure>
+      {% endif %}
+      {% if page.gallery_image_6 and page.gallery_image_6 != '' %}
+        <figure class="gallery-card">
+          <img src="{{ page.gallery_image_6 }}" alt="{{ page.name_fa }}" loading="lazy">
+        </figure>
+      {% endif %}
+      {% if page.gallery_image_7 and page.gallery_image_7 != '' %}
+        <figure class="gallery-card">
+          <img src="{{ page.gallery_image_7 }}" alt="{{ page.name_fa }}" loading="lazy">
+        </figure>
+      {% endif %}
+      {% if page.gallery_image_8 and page.gallery_image_8 != '' %}
+        <figure class="gallery-card">
+          <img src="{{ page.gallery_image_8 }}" alt="{{ page.name_fa }}" loading="lazy">
+        </figure>
+      {% endif %}
     </div>
   </section>
   {% endif %}
 
-  {% if page.gallery_videos and page.gallery_videos.size > 0 %}
+  {% assign has_video = false %}
+  {% if page.video_url_1 and page.video_url_1 != '' %}{% assign has_video = true %}{% endif %}
+  {% if page.video_url_2 and page.video_url_2 != '' %}{% assign has_video = true %}{% endif %}
+  {% if page.video_url_3 and page.video_url_3 != '' %}{% assign has_video = true %}{% endif %}
+  {% if page.video_url_4 and page.video_url_4 != '' %}{% assign has_video = true %}{% endif %}
+
+  {% if has_video %}
   <section class="gallery-section">
     <h2>ویدیوها</h2>
     <div class="video-grid">
-      {% for item in page.gallery_videos %}
-        {% if item.video_url %}
-          <div class="video-card">
-            <video controls preload="metadata">
-              <source src="{{ item.video_url }}">
-            </video>
-          </div>
-        {% endif %}
-      {% endfor %}
+      {% if page.video_url_1 and page.video_url_1 != '' %}
+        <div class="video-card">
+          {% assign vid1 = page.video_url_1 %}
+          {% if vid1 contains 'youtube.com' or vid1 contains 'youtu.be' %}
+            {% assign yt_id1 = vid1 | split: 'v=' | last | split: '&' | first %}
+            {% if vid1 contains 'youtu.be' %}{% assign yt_id1 = vid1 | split: 'youtu.be/' | last | split: '?' | first %}{% endif %}
+            <iframe src="https://www.youtube.com/embed/{{ yt_id1 }}" frameborder="0" allowfullscreen loading="lazy"></iframe>
+          {% else %}
+            <video controls preload="metadata"><source src="{{ vid1 }}"></video>
+          {% endif %}
+        </div>
+      {% endif %}
+      {% if page.video_url_2 and page.video_url_2 != '' %}
+        <div class="video-card">
+          {% assign vid2 = page.video_url_2 %}
+          {% if vid2 contains 'youtube.com' or vid2 contains 'youtu.be' %}
+            {% assign yt_id2 = vid2 | split: 'v=' | last | split: '&' | first %}
+            {% if vid2 contains 'youtu.be' %}{% assign yt_id2 = vid2 | split: 'youtu.be/' | last | split: '?' | first %}{% endif %}
+            <iframe src="https://www.youtube.com/embed/{{ yt_id2 }}" frameborder="0" allowfullscreen loading="lazy"></iframe>
+          {% else %}
+            <video controls preload="metadata"><source src="{{ vid2 }}"></video>
+          {% endif %}
+        </div>
+      {% endif %}
+      {% if page.video_url_3 and page.video_url_3 != '' %}
+        <div class="video-card">
+          {% assign vid3 = page.video_url_3 %}
+          {% if vid3 contains 'youtube.com' or vid3 contains 'youtu.be' %}
+            {% assign yt_id3 = vid3 | split: 'v=' | last | split: '&' | first %}
+            {% if vid3 contains 'youtu.be' %}{% assign yt_id3 = vid3 | split: 'youtu.be/' | last | split: '?' | first %}{% endif %}
+            <iframe src="https://www.youtube.com/embed/{{ yt_id3 }}" frameborder="0" allowfullscreen loading="lazy"></iframe>
+          {% else %}
+            <video controls preload="metadata"><source src="{{ vid3 }}"></video>
+          {% endif %}
+        </div>
+      {% endif %}
+      {% if page.video_url_4 and page.video_url_4 != '' %}
+        <div class="video-card">
+          {% assign vid4 = page.video_url_4 %}
+          {% if vid4 contains 'youtube.com' or vid4 contains 'youtu.be' %}
+            {% assign yt_id4 = vid4 | split: 'v=' | last | split: '&' | first %}
+            {% if vid4 contains 'youtu.be' %}{% assign yt_id4 = vid4 | split: 'youtu.be/' | last | split: '?' | first %}{% endif %}
+            <iframe src="https://www.youtube.com/embed/{{ yt_id4 }}" frameborder="0" allowfullscreen loading="lazy"></iframe>
+          {% else %}
+            <video controls preload="metadata"><source src="{{ vid4 }}"></video>
+          {% endif %}
+        </div>
+      {% endif %}
     </div>
   </section>
   {% endif %}
@@ -176,7 +259,6 @@ layout: default
     align-items: stretch;
   }
 
-  /* ===== عکس شاخص ===== */
   .person-hero-media {
     position: relative;
     border-radius: 24px;
@@ -208,7 +290,6 @@ layout: default
     object-fit: contain;
     border-radius: 0;
   }
-  /* ===== پایان عکس شاخص ===== */
 
   .person-hero-info {
     background: var(--surface);
@@ -263,7 +344,6 @@ layout: default
   .fact-row strong { color: var(--text); }
   .fact-row span, .fact-row a { color: var(--muted); word-break: break-word; }
 
-  /* ===== سوشال مدیا - دو ستونه در دسکتاپ ===== */
   .social-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -288,7 +368,6 @@ layout: default
   .prose h2, .prose h3, .prose h4 { margin-top: 1.8em; margin-bottom: .8em; }
   .prose ul, .prose ol { margin: 0 0 1.2em; padding-right: 1.5em; }
 
-  /* ===== گالری تصاویر ===== */
   .gallery-section { padding: 0; }
 
   .gallery-section h2 {
@@ -317,7 +396,6 @@ layout: default
     display: block;
   }
 
-  /* ===== ویدیوها ===== */
   .video-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -329,14 +407,17 @@ layout: default
     overflow: hidden;
     background: var(--surface);
     border: 1px solid var(--border);
+    aspect-ratio: 16/9;
   }
 
-  .video-card video {
+  .video-card video,
+  .video-card iframe {
     width: 100%;
+    height: 100%;
     display: block;
+    border: none;
   }
 
-  /* ===== فرم تماس ===== */
   .person-contact h2 { margin-bottom: 8px; font-size: 1.3rem; }
 
   .person-contact-note {
@@ -391,98 +472,48 @@ layout: default
   }
 
   @media (max-width: 860px) {
-    .person-hero-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .hero-img-main {
-      max-height: 360px;
-    }
-
-    .person-content,
-    .contact-card,
-    .person-hero-info {
+    .person-hero-grid { grid-template-columns: 1fr; }
+    .hero-img-main { max-height: 360px; }
+    .person-content, .contact-card, .person-hero-info {
       padding: 18px;
       border-radius: 18px;
     }
-
-    .fact-row {
-      grid-template-columns: 1fr;
-      gap: 6px;
-    }
-
-    /* ===== سوشال مدیا - تک ستونه در موبایل ===== */
-    .social-grid {
-      grid-template-columns: 1fr;
-    }
+    .fact-row { grid-template-columns: 1fr; gap: 6px; }
+    .social-grid { grid-template-columns: 1fr; }
   }
 </style>
 
 <script>
-  const personForm = document.getElementById("person-contact-form");
-  const personStatus = document.getElementById("person-form-status");
-  const personBtn = document.getElementById("person-submit-btn");
-  const personSubmittedAt = document.getElementById("person_submitted_at");
+  document.getElementById('person_submitted_at').value = new Date().toISOString();
 
-  if (personSubmittedAt) personSubmittedAt.value = Date.now();
-
-  if (personForm) {
-    personForm.addEventListener("submit", async function (e) {
-      e.preventDefault();
-
-      const started = Number(personSubmittedAt.value || Date.now());
-      const elapsed = Date.now() - started;
-      const botcheck = personForm.querySelector('input[name="botcheck"]').checked;
-
-      if (botcheck || elapsed < 3000) {
-        personStatus.style.display = "block";
-        personStatus.style.background = "#fee2e2";
-        personStatus.style.color = "#991b1b";
-        personStatus.textContent = "ارسال فرم انجام نشد.";
-        return;
+  document.getElementById('person-contact-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('person-submit-btn');
+    const status = document.getElementById('person-form-status');
+    btn.disabled = true;
+    btn.textContent = 'در حال ارسال...';
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: new FormData(this)
+      });
+      const data = await res.json();
+      if (data.success) {
+        status.style.display = 'block';
+        status.style.background = '#d1fae5';
+        status.style.color = '#065f46';
+        status.textContent = 'پیام شما با موفقیت ارسال شد.';
+        this.reset();
+      } else {
+        throw new Error();
       }
-
-      personBtn.disabled = true;
-      personBtn.textContent = "در حال ارسال...";
-
-      const formData = new FormData(personForm);
-      const object = Object.fromEntries(formData);
-      const json = JSON.stringify(object);
-
-      try {
-        const response = await fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-          },
-          body: json
-        });
-
-        const result = await response.json();
-
-        if (result.success) {
-          personForm.reset();
-          personSubmittedAt.value = Date.now();
-          personStatus.style.display = "block";
-          personStatus.style.background = "#dff7ea";
-          personStatus.style.color = "#14532d";
-          personStatus.textContent = "پیام شما دریافت شد.";
-        } else {
-          personStatus.style.display = "block";
-          personStatus.style.background = "#fee2e2";
-          personStatus.style.color = "#991b1b";
-          personStatus.textContent = result.message || "ارسال پیام انجام نشد.";
-        }
-      } catch (error) {
-        personStatus.style.display = "block";
-        personStatus.style.background = "#fee2e2";
-        personStatus.style.color = "#991b1b";
-        personStatus.textContent = "خطا در ارسال فرم.";
-      }
-
-      personBtn.disabled = false;
-      personBtn.textContent = "ارسال پیام";
-    });
-  }
+    } catch {
+      status.style.display = 'block';
+      status.style.background = '#fee2e2';
+      status.style.color = '#991b1b';
+      status.textContent = 'خطا در ارسال. لطفاً دوباره تلاش کنید.';
+    }
+    btn.disabled = false;
+    btn.textContent = 'ارسال پیام';
+  });
 </script>
