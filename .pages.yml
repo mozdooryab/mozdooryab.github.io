@@ -24,7 +24,7 @@ content:
       - { name: instagram, label: Instagram, type: string, required: false }
       - { name: facebook, label: Facebook, type: string, required: false }
       - { name: telegram, label: Telegram, type: string, required: false }
-      - { name: featured_image, label: Featured Image, type: image, required: false }
+      - { name: tags_text, label: Tags, type: string, required: false }
 
       - name: gallery_images
         label: Gallery Images
@@ -40,7 +40,7 @@ content:
         fields:
           - { name: video_url, label: Video URL, type: string }
 
-      - { name: tags_text, label: Tags comma separated, type: string, required: false }
+      - { name: featured_image, label: Featured Image, type: image, required: false }
       - { name: body, label: Body, type: rich-text }
 
   - name: pages
