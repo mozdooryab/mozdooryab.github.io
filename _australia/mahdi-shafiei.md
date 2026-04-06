@@ -13,8 +13,8 @@ instagram: ''
 facebook: ''
 telegram: ''
 featured_image: /assets/uploads/image (4).jpg
-gallery_image_1: /assets/uploads/pasted-image-1775453856696.png
-gallery_image_2: /assets/uploads/pasted-image-1775453873389.png
+gallery_image_1: /assets/uploads/mahdi-shafiei-1.png
+gallery_image_2: /assets/uploads/mahdi-shafiei-2.png
 gallery_image_3: /assets/uploads/image (5).jpg
 gallery_image_4: /assets/uploads/image (6).jpg
 gallery_image_5: ''
