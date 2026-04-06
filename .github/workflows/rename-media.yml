@@ -1,8 +1,10 @@
 name: Auto-rename uploaded media
+
 on:
   push:
     paths:
       - '_australia/**'
+      - 'assets/uploads/**'
 
 permissions:
   contents: write
@@ -15,7 +17,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 2
+          fetch-depth: 0
 
       - name: Rename images and update references
         run: |
@@ -26,8 +28,16 @@ jobs:
               ['git', 'diff', '--name-only', 'HEAD~1', 'HEAD'],
               capture_output=True, text=True
           )
-          changed_mds = [f for f in result.stdout.strip().split('\n')
+          changed_files = result.stdout.strip().split('\n')
+          print("Changed files:", changed_files)
+
+          changed_mds = [f for f in changed_files
                          if f.startswith('_australia/') and f.endswith('.md')]
+
+          if not changed_mds:
+              all_mds = [f'_australia/{f}' for f in os.listdir('_australia') if f.endswith('.md')]
+              changed_mds = all_mds
+              print("No .md in this commit, processing all md files with new uploads")
 
           for md_path in changed_mds:
               if not os.path.exists(md_path):
@@ -41,7 +51,8 @@ jobs:
               changed = False
 
               for old_url in image_refs:
-                  old_file_path = old_url.lstrip('/')
+                  old_url_clean = old_url.strip()
+                  old_file_path = old_url_clean.lstrip('/')
                   if not os.path.exists(old_file_path):
                       continue
                   filename = os.path.basename(old_file_path)
@@ -69,14 +80,14 @@ jobs:
                   new_url = '/' + new_file_path
 
                   shutil.move(old_file_path, new_file_path)
-                  content = content.replace(old_url, new_url)
+                  content = content.replace(old_url_clean, new_url)
                   changed = True
                   print(f"Renamed: {old_file_path} -> {new_file_path}")
 
               if changed:
                   with open(md_path, 'w', encoding='utf-8') as f:
                       f.write(content)
-                  print(f"Updated references in: {md_path}")
+                  print(f"Updated: {md_path}")
           EOF
 
       - name: Commit renamed files
