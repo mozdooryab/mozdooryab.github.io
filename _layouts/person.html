@@ -28,63 +28,64 @@ layout: default
         </h1>
 
         <div class="person-keyfacts">
-          {% if page.role %}
-            <div class="fact-row">
-              <strong>شغل/محل کار</strong>
-              <span>{{ page.role }}</span>
-            </div>
-          {% endif %}
+          {% if page.role and page.role != '' %}
+  <div class="fact-row">
+    <strong>شغل/محل کار</strong>
+    <span>{{ page.role }}</span>
+  </div>
+{% endif %}
 
-          {% if page.phone %}
-            <div class="fact-row">
-              <strong>تلفن</strong>
-              <span>{{ page.phone }}</span>
-            </div>
-          {% endif %}
+{% if page.phone and page.phone != '' %}
+  <div class="fact-row">
+    <strong>تلفن</strong>
+    <span>{{ page.phone }}</span>
+  </div>
+{% endif %}
 
-          {% if page.email %}
-            <div class="fact-row">
-              <strong>ایمیل</strong>
-              <span>{{ page.email }}</span>
-            </div>
-          {% endif %}
+{% if page.email and page.email != '' %}
+  <div class="fact-row">
+    <strong>ایمیل</strong>
+    <span>{{ page.email }}</span>
+  </div>
+{% endif %}
 
-          {% assign has_social = false %}
-          {% if page.linkedin or page.instagram or page.facebook or page.telegram %}
-            {% assign has_social = true %}
-          {% endif %}
+{% assign has_social = false %}
+{% if page.linkedin and page.linkedin != '' %}{% assign has_social = true %}{% endif %}
+{% if page.instagram and page.instagram != '' %}{% assign has_social = true %}{% endif %}
+{% if page.facebook and page.facebook != '' %}{% assign has_social = true %}{% endif %}
+{% if page.telegram and page.telegram != '' %}{% assign has_social = true %}{% endif %}
 
-          {% if has_social %}
-          <div class="social-grid">
-            {% if page.linkedin %}
-              <div class="fact-row">
-                <strong>لینکدین</strong>
-                <span>{{ page.linkedin }}</span>
-              </div>
-            {% endif %}
+{% if has_social %}
+<div class="social-grid">
+  {% if page.linkedin and page.linkedin != '' %}
+    <div class="fact-row">
+      <strong>لینکدین</strong>
+      <span>{{ page.linkedin }}</span>
+    </div>
+  {% endif %}
 
-            {% if page.instagram %}
-              <div class="fact-row">
-                <strong>اینستاگرام</strong>
-                <span>{{ page.instagram }}</span>
-              </div>
-            {% endif %}
+  {% if page.instagram and page.instagram != '' %}
+    <div class="fact-row">
+      <strong>اینستاگرام</strong>
+      <span>{{ page.instagram }}</span>
+    </div>
+  {% endif %}
 
-            {% if page.facebook %}
-              <div class="fact-row">
-                <strong>فیسبوک</strong>
-                <span>{{ page.facebook }}</span>
-              </div>
-            {% endif %}
+  {% if page.facebook and page.facebook != '' %}
+    <div class="fact-row">
+      <strong>فیسبوک</strong>
+      <span>{{ page.facebook }}</span>
+    </div>
+  {% endif %}
 
-            {% if page.telegram %}
-              <div class="fact-row">
-                <strong>تلگرام</strong>
-                <span>{{ page.telegram }}</span>
-              </div>
-            {% endif %}
-          </div>
-          {% endif %}
+  {% if page.telegram and page.telegram != '' %}
+    <div class="fact-row">
+      <strong>تلگرام</strong>
+      <span>{{ page.telegram }}</span>
+    </div>
+  {% endif %}
+</div>
+{% endif %}
 
         </div>
       </div>
