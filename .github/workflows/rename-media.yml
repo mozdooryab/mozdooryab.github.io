@@ -4,6 +4,9 @@ on:
     paths:
       - '_australia/**'
 
+permissions:
+  contents: write
+
 jobs:
   rename-media:
     runs-on: ubuntu-latest
