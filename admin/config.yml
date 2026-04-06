@@ -3,8 +3,8 @@ backend:
   repo: mozdooryab/mozdooryab.github.io
   branch: main
 
-media_folder: assets/uploads
-public_folder: /assets/uploads
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
 
 collections:
   - name: australia
@@ -14,9 +14,11 @@ collections:
     create: true
     slug: "{{fields.slug}}"
     identifier_field: name_fa
+    media_folder: "assets/uploads/{{slug}}"
+    public_folder: "/assets/uploads/{{slug}}"
     fields:
       - { label: Layout, name: layout, widget: hidden, default: person }
-      - { label: Published (yes/no), name: published, widget: string, default: "yes", required: false }
+      - { label: Active (yes/no), name: active, widget: string, default: "yes", required: false }
       - { label: Name FA, name: name_fa, widget: string }
       - { label: Name EN, name: name_en, widget: string }
       - { label: Slug, name: slug, widget: string }
