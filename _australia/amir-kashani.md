@@ -18,7 +18,7 @@ gallery_image_2: /assets/uploads/HD-uey4agAAZ9EO.png
 gallery_image_3: /assets/uploads/image.jpg
 gallery_image_4: /assets/uploads/image (1).jpg
 gallery_image_5: /assets/uploads/image (2).jpg
-gallery_image_6: ''
+gallery_image_6: /assets/uploads/image (3).jpg
 gallery_image_7: ''
 gallery_image_8: ''
 video_url_1: ''
