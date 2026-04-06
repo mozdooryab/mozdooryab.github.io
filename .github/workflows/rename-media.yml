@@ -22,13 +22,13 @@ jobs:
 
       - name: Fix and rename images
         run: |
-          python3 << 'EOF'
+          python3 << 'PYEOF'
           import os, re, shutil, glob
 
           UPLOADS = 'assets/uploads'
           os.makedirs(UPLOADS, exist_ok=True)
 
-          # Step 1: Move misplaced image files from _australia/ into assets/uploads/
+          # Move any image files accidentally placed inside _australia/
           for root, dirs, files in os.walk('_australia'):
               for fn in files:
                   if fn.lower().endswith(('.png','.jpg','.jpeg','.gif','.webp','.avif','.jfif')):
@@ -41,29 +41,25 @@ jobs:
                           os.remove(src)
                           print(f"Removed duplicate: {src}")
 
-          # Step 2: Build lookup of available files in uploads
-          upload_files = {}
-          for fn in os.listdir(UPLOADS):
-              upload_files[fn] = os.path.join(UPLOADS, fn)
+          # Build lookup of all files currently in uploads
+          upload_files = {fn: os.path.join(UPLOADS, fn) for fn in os.listdir(UPLOADS)}
 
-          # Step 3: Process each .md file
+          # Process each .md file
           for md_path in sorted(glob.glob('_australia/*.md')):
               with open(md_path, 'r', encoding='utf-8') as f:
-                  content = f.read()
+                  lines = f.readlines()
 
               slug = os.path.splitext(os.path.basename(md_path))[0]
-              changed = False
               counters = {}
-              rename_map = {}  # original_filename -> new_url (track duplicates)
+              rename_map = {}
+              new_lines = []
+              changed = False
 
-              def get_next_num(slug, ext, counters):
+              def next_num(slug, ext):
                   key = (slug, ext)
                   if key not in counters:
-                      nums = []
-                      for fn in os.listdir(UPLOADS):
-                          m = re.match(rf'^{re.escape(slug)}-(\d+){re.escape(ext)}$', fn)
-                          if m:
-                              nums.append(int(m.group(1)))
+                      nums = [int(m.group(1)) for fn in os.listdir(UPLOADS)
+                              for m in [re.match(rf'^{re.escape(slug)}-(\d+){re.escape(ext)}$', fn)] if m]
                       counters[key] = max(nums) + 1 if nums else 1
                   n = counters[key]
                   while os.path.exists(os.path.join(UPLOADS, f"{slug}-{n}{ext}")):
@@ -71,62 +67,59 @@ jobs:
                   counters[key] = n + 1
                   return n
 
-              lines = content.split('\n')
-              new_lines = []
               for line in lines:
-                  m = re.match(r'^(\s*[\w_]+\s*:\s*)(.+)$', line)
-                  if m and 'assets/uploads' in m.group(2):
-                      prefix = m.group(1)
-                      raw_val = m.group(2).strip().strip("'\"").strip()
-                      filename = os.path.basename(raw_val)
-                      ext = os.path.splitext(filename)[1].lower()
-
-                      if not ext:
-                          new_lines.append(line)
-                          continue
-
-                      # Already correctly named — just fix path format
-                      if re.match(rf'^{re.escape(slug)}-\d+{re.escape(ext)}$', filename):
-                          correct_url = f'/assets/uploads/{filename}'
-                          new_line = f"{prefix}{correct_url}"
-                          new_lines.append(new_line)
-                          if new_line.strip() != line.strip():
-                              changed = True
-                          continue
-
-                      # Already renamed in this run (duplicate reference)
-                      if filename in rename_map:
-                          new_lines.append(f"{prefix}{rename_map[filename]}")
-                          changed = True
-                          continue
-
-                      # File exists in uploads — rename it
-                      if filename in upload_files:
-                          num = get_next_num(slug, ext, counters)
-                          new_filename = f"{slug}-{num}{ext}"
-                          old_path = upload_files[filename]
-                          new_path = os.path.join(UPLOADS, new_filename)
-                          shutil.move(old_path, new_path)
-                          upload_files[new_filename] = new_path
-                          del upload_files[filename]
-                          new_url = f'/assets/uploads/{new_filename}'
-                          rename_map[filename] = new_url
-                          print(f"Renamed: {old_path} -> {new_path}")
-                          new_lines.append(f"{prefix}{new_url}")
-                          changed = True
-                          continue
-
-                      # File not found — keep line as-is
+                  stripped = line.rstrip('\n')
+                  m = re.match(r'^(\s*[\w_]+\s*:\s*)(.+)$', stripped)
+                  if not (m and 'assets/uploads' in m.group(2)):
                       new_lines.append(line)
-                  else:
+                      continue
+
+                  prefix = m.group(1)
+                  raw_val = m.group(2).strip().strip("'\"").strip()
+                  filename = os.path.basename(raw_val)
+                  ext = os.path.splitext(filename)[1].lower()
+
+                  if not ext:
                       new_lines.append(line)
+                      continue
+
+                  # Already correctly named
+                  if re.match(rf'^{re.escape(slug)}-\d+{re.escape(ext)}$', filename):
+                      correct = f"{prefix}/assets/uploads/{filename}\n"
+                      new_lines.append(correct)
+                      if correct.rstrip('\n') != stripped:
+                          changed = True
+                      continue
+
+                  # Already renamed earlier in this run (duplicate ref)
+                  if filename in rename_map:
+                      new_lines.append(f"{prefix}{rename_map[filename]}\n")
+                      changed = True
+                      continue
+
+                  # Rename the file
+                  if filename in upload_files:
+                      n = next_num(slug, ext)
+                      new_fn = f"{slug}-{n}{ext}"
+                      new_path = os.path.join(UPLOADS, new_fn)
+                      shutil.move(upload_files[filename], new_path)
+                      upload_files[new_fn] = new_path
+                      del upload_files[filename]
+                      new_url = f'/assets/uploads/{new_fn}'
+                      rename_map[filename] = new_url
+                      print(f"Renamed: {filename} -> {new_fn}")
+                      new_lines.append(f"{prefix}{new_url}\n")
+                      changed = True
+                      continue
+
+                  new_lines.append(line)
 
               if changed:
                   with open(md_path, 'w', encoding='utf-8') as f:
-                      f.write('\n'.join(new_lines))
+                      f.writelines(new_lines)
                   print(f"Updated: {md_path}")
 
-          EOF
+          PYEOF
 
       - name: Commit changes
         run: |
