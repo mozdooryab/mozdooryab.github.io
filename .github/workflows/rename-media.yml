@@ -20,7 +20,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
-      - name: Fix paths and rename images
+      - name: Fix and rename images
         run: |
           python3 << 'EOF'
           import os, re, shutil, glob
@@ -28,69 +28,42 @@ jobs:
           UPLOADS = 'assets/uploads'
           os.makedirs(UPLOADS, exist_ok=True)
 
-          # Step 1: Move misplaced files from _australia/assets/uploads/ → assets/uploads/
-          wrong_dir = '_australia/assets/uploads'
-          if os.path.exists(wrong_dir):
-              for root, dirs, files in os.walk(wrong_dir):
-                  for fn in files:
+          # Step 1: Move ALL misplaced files anywhere under _australia/ into assets/uploads/
+          for root, dirs, files in os.walk('_australia'):
+              for fn in files:
+                  if fn.endswith(('.png','.jpg','.jpeg','.gif','.webp','.avif','.jfif')):
                       src = os.path.join(root, fn)
                       dst = os.path.join(UPLOADS, fn)
                       if not os.path.exists(dst):
                           shutil.move(src, dst)
                           print(f"Moved: {src} -> {dst}")
-              shutil.rmtree(wrong_dir, ignore_errors=True)
-              print(f"Removed wrong dir: {wrong_dir}")
+                      else:
+                          os.remove(src)
+                          print(f"Removed duplicate: {src}")
+              # Remove empty subdirectories inside _australia/assets/
+              for d in dirs:
+                  dpath = os.path.join(root, d)
+                  if 'assets' in dpath:
+                      try:
+                          os.rmdir(dpath)
+                      except:
+                          pass
 
-          # Step 2: Process all .md files
-          def find_image_paths(content):
-              paths = []
-              for line in content.split('\n'):
-                  m = re.search(r':\s*(/?assets/uploads/[^\n\r]+)', line)
-                  if m:
-                      val = m.group(1).strip().strip("'\"").strip()
-                      if val:
-                          paths.append(val)
-              return paths
+          # Step 2: Build a filename lookup map (filename -> full path in assets/uploads/)
+          upload_files = {}
+          for fn in os.listdir(UPLOADS):
+              upload_files[fn] = os.path.join(UPLOADS, fn)
 
+          # Step 3: Process each .md file
           for md_path in sorted(glob.glob('_australia/*.md')):
               with open(md_path, 'r', encoding='utf-8') as f:
                   content = f.read()
 
               slug = os.path.splitext(os.path.basename(md_path))[0]
-              counters = {}
               changed = False
-              seen_files = {}  # old_file_path -> new_url (for duplicate references)
+              counters = {}
 
-              for old_url in find_image_paths(content):
-                  old_file_path = old_url.lstrip('/')
-
-                  # Already processed this file (duplicate reference in same .md)
-                  if old_file_path in seen_files:
-                      if old_url != seen_files[old_file_path]:
-                          content = content.replace(old_url, seen_files[old_file_path])
-                          changed = True
-                      continue
-
-                  if not os.path.exists(old_file_path):
-                      continue
-
-                  filename = os.path.basename(old_file_path)
-                  ext = os.path.splitext(filename)[1].lower()
-                  if not ext:
-                      continue
-
-                  correct_name = bool(re.match(rf'^{re.escape(slug)}-\d+\{ext}$', filename))
-                  correct_dir = (os.path.dirname(old_file_path) == UPLOADS)
-
-                  if correct_name and correct_dir:
-                      correct_url = '/' + old_file_path
-                      seen_files[old_file_path] = correct_url
-                      if old_url != correct_url:
-                          content = content.replace(old_url, correct_url)
-                          changed = True
-                      continue
-
-                  # Find next available number
+              def get_next_num(slug, ext):
                   key = (slug, ext)
                   if key not in counters:
                       nums = []
@@ -99,27 +72,64 @@ jobs:
                           if m:
                               nums.append(int(m.group(1)))
                       counters[key] = max(nums) + 1 if nums else 1
+                  n = counters[key]
+                  while os.path.exists(os.path.join(UPLOADS, f"{slug}-{n}{ext}")):
+                      n += 1
+                  counters[key] = n + 1
+                  return n
 
-                  num = counters[key]
-                  new_filename = f"{slug}-{num}{ext}"
-                  new_path = os.path.join(UPLOADS, new_filename)
-                  while os.path.exists(new_path):
-                      num += 1
-                      new_filename = f"{slug}-{num}{ext}"
-                      new_path = os.path.join(UPLOADS, new_filename)
-                  counters[key] = num + 1
+              # Find all image field values (any path containing assets/uploads)
+              lines = content.split('\n')
+              new_lines = []
+              for line in lines:
+                  m = re.match(r'^(\s*\w+\s*:\s*)(.+)$', line)
+                  if m and 'assets/uploads' in m.group(2):
+                      prefix = m.group(1)
+                      raw_val = m.group(2).strip().strip("'\"")
 
-                  new_url = '/' + new_path
-                  shutil.move(old_file_path, new_path)
-                  seen_files[old_file_path] = new_url
-                  content = content.replace(old_url, new_url)
-                  changed = True
-                  print(f"Renamed: {old_file_path} -> {new_path}")
+                      # Extract just the filename from whatever path was given
+                      filename = os.path.basename(raw_val)
+                      ext = os.path.splitext(filename)[1].lower()
+
+                      if not ext:
+                          new_lines.append(line)
+                          continue
+
+                      # Check if already correctly named
+                      if re.match(rf'^{re.escape(slug)}-\d+{re.escape(ext)}$', filename):
+                          # Just fix the path format (ensure leading / and correct dir)
+                          correct_url = f'/assets/uploads/{filename}'
+                          new_line = f"{prefix}{correct_url}"
+                          if new_line != line:
+                              new_lines.append(new_line)
+                              changed = True
+                          else:
+                              new_lines.append(line)
+                          continue
+
+                      # File exists in uploads with original name?
+                      if filename in upload_files:
+                          num = get_next_num(slug, ext)
+                          new_filename = f"{slug}-{num}{ext}"
+                          old_path = upload_files[filename]
+                          new_path = os.path.join(UPLOADS, new_filename)
+                          shutil.move(old_path, new_path)
+                          upload_files[new_filename] = new_path
+                          del upload_files[filename]
+                          print(f"Renamed: {old_path} -> {new_path}")
+                          new_url = f'/assets/uploads/{new_filename}'
+                          new_lines.append(f"{prefix}{new_url}")
+                          changed = True
+                      else:
+                          new_lines.append(line)
+                  else:
+                      new_lines.append(line)
 
               if changed:
                   with open(md_path, 'w', encoding='utf-8') as f:
-                      f.write(content)
+                      f.write('\n'.join(new_lines))
                   print(f"Updated: {md_path}")
+
           EOF
 
       - name: Commit changes
