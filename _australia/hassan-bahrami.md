@@ -12,10 +12,10 @@ linkedin: Hassan B.
 instagram: ''
 facebook: Hassan Ba
 telegram: ''
-featured_image: assets/uploads/hassan-bahrami/pasted-image-1775455343083.png
-gallery_image_1: assets/uploads/hassan-bahrami/pasted-image-1775455355347.png
-gallery_image_2: assets/uploads/hassan-bahrami/pasted-image-1775455360315.png
-gallery_image_3: assets/uploads/hassan-bahrami/pasted-image-1775455365232.png
+featured_image: /assets/uploads/hassan-bahrami-1.png
+gallery_image_1: /assets/uploads/hassan-bahrami-2.png
+gallery_image_2: /assets/uploads/hassan-bahrami-3.png
+gallery_image_3: /assets/uploads/hassan-bahrami-4.png
 gallery_image_4: assets/uploads/hassan-bahrami/pasted-image-1775455343083.png
 gallery_image_5: ''
 gallery_image_6: ''
