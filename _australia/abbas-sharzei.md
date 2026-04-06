@@ -12,11 +12,11 @@ linkedin: abbas-sharzei
 instagram: ''
 facebook: abbas.sharzei
 telegram: ''
-featured_image: /assets/uploads/Abbas-Sharzei.webp
-gallery_image_1: /assets/uploads/HD2rxmaboAMC7oU.jfif
-gallery_image_2: /assets/uploads/HD2sWnmboAIuMGK.jfif
-gallery_image_3: /assets/uploads/HD2r1eibsAADUFq.jfif
-gallery_image_4: /assets/uploads/HD2sgpoboAM2XDT.jfif
+featured_image: /assets/uploads/abbas-sharzei-1.webp
+gallery_image_1: /assets/uploads/abbas-sharzei-1.jfif
+gallery_image_2: /assets/uploads/abbas-sharzei-2.jfif
+gallery_image_3: /assets/uploads/abbas-sharzei-3.jfif
+gallery_image_4: /assets/uploads/abbas-sharzei-4.jfif
 gallery_image_5: ''
 gallery_image_6: ''
 gallery_image_7: ''

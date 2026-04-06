@@ -12,11 +12,11 @@ linkedin: mshafiei78
 instagram: ''
 facebook: ''
 telegram: ''
-featured_image: /assets/uploads/image (4).jpg
+featured_image: /assets/uploads/mahdi-shafiei-1.jpg
 gallery_image_1: /assets/uploads/mahdi-shafiei-1.png
 gallery_image_2: /assets/uploads/mahdi-shafiei-2.png
-gallery_image_3: /assets/uploads/image (6).jpg
-gallery_image_4: /assets/uploads/image (5).jpg
+gallery_image_3: /assets/uploads/mahdi-shafiei-2.jpg
+gallery_image_4: /assets/uploads/mahdi-shafiei-3.jpg
 gallery_image_5: ''
 gallery_image_6: ''
 gallery_image_7: ''

@@ -12,11 +12,11 @@ linkedin: Armin G.
 instagram: armin.ge
 facebook: ''
 telegram: Armin_Ge   AND  Ausipersian_electrician
-featured_image: /assets/uploads/Armin Gelareh (1).png
-gallery_image_1: /assets/uploads/HD7pG-VbkAAoHx4.jfif
-gallery_image_2: /assets/uploads/HD7sC_xaAAEFJ4h.jfif
-gallery_image_3: /assets/uploads/HD7sErHaAAAlI8Q.jfif
-gallery_image_4: /assets/uploads/HD7sBboboAEyqGU.jfif
+featured_image: /assets/uploads/armin-gelareh-1.png
+gallery_image_1: /assets/uploads/armin-gelareh-1.jfif
+gallery_image_2: /assets/uploads/armin-gelareh-2.jfif
+gallery_image_3: /assets/uploads/armin-gelareh-3.jfif
+gallery_image_4: /assets/uploads/armin-gelareh-4.jfif
 gallery_image_5: ''
 gallery_image_6: ''
 gallery_image_7: ''

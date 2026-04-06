@@ -16,9 +16,9 @@ featured_image: /assets/uploads/amir-kashani-1.png
 gallery_image_1: /assets/uploads/amir-kashani-2.png
 gallery_image_2: /assets/uploads/amir-kashani-3.png
 gallery_image_3: /assets/uploads/amir-kashani-1.jpg
-gallery_image_4: /assets/uploads/image (1).jpg
-gallery_image_5: /assets/uploads/image (2).jpg
-gallery_image_6: /assets/uploads/image (3).jpg
+gallery_image_4: /assets/uploads/amir-kashani-2.jpg
+gallery_image_5: /assets/uploads/amir-kashani-3.jpg
+gallery_image_6: /assets/uploads/amir-kashani-4.jpg
 gallery_image_7: ''
 gallery_image_8: ''
 video_url_1: ''
