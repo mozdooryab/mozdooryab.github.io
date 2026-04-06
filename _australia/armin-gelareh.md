@@ -9,7 +9,7 @@ role: Control System Engineer
 email: ''
 phone: ''
 linkedin: Armin G.
-instagram: ''
+instagram: armin.ge
 facebook: ''
 telegram: Armin_Ge   AND  Ausipersian_electrician
 featured_image: /assets/uploads/Armin Gelareh (1).png
