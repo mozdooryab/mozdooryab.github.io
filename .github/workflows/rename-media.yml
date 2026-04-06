@@ -5,6 +5,7 @@ on:
     paths:
       - '_australia/**'
       - 'assets/uploads/**'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -19,70 +20,101 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
-      - name: Rename images and update references
+      - name: Fix paths and rename images
         run: |
           python3 << 'EOF'
-          import os, re, shutil, subprocess
+          import os, re, shutil, glob
 
-          result = subprocess.run(
-              ['git', 'diff', '--name-only', 'HEAD~1', 'HEAD'],
-              capture_output=True, text=True
-          )
-          changed_files = result.stdout.strip().split('\n')
-          print("Changed files:", changed_files)
+          UPLOADS = 'assets/uploads'
+          os.makedirs(UPLOADS, exist_ok=True)
 
-          changed_mds = [f for f in changed_files
-                         if f.startswith('_australia/') and f.endswith('.md')]
+          # Step 1: Move misplaced files from _australia/assets/uploads/ → assets/uploads/
+          wrong_dir = '_australia/assets/uploads'
+          if os.path.exists(wrong_dir):
+              for root, dirs, files in os.walk(wrong_dir):
+                  for fn in files:
+                      src = os.path.join(root, fn)
+                      dst = os.path.join(UPLOADS, fn)
+                      if not os.path.exists(dst):
+                          shutil.move(src, dst)
+                          print(f"Moved: {src} -> {dst}")
+              shutil.rmtree(wrong_dir, ignore_errors=True)
+              print(f"Removed wrong dir: {wrong_dir}")
 
-          if not changed_mds:
-              all_mds = [f'_australia/{f}' for f in os.listdir('_australia') if f.endswith('.md')]
-              changed_mds = all_mds
-              print("No .md in this commit, processing all md files with new uploads")
+          # Step 2: Process all .md files
+          def find_image_paths(content):
+              paths = []
+              for line in content.split('\n'):
+                  m = re.search(r':\s*(/?assets/uploads/[^\n\r]+)', line)
+                  if m:
+                      val = m.group(1).strip().strip("'\"").strip()
+                      if val:
+                          paths.append(val)
+              return paths
 
-          for md_path in changed_mds:
-              if not os.path.exists(md_path):
-                  continue
+          for md_path in sorted(glob.glob('_australia/*.md')):
               with open(md_path, 'r', encoding='utf-8') as f:
                   content = f.read()
 
               slug = os.path.splitext(os.path.basename(md_path))[0]
-              image_refs = re.findall(r'/assets/uploads/[^\s\'">\)]+', content)
               counters = {}
               changed = False
+              seen_files = {}  # old_file_path -> new_url (for duplicate references)
 
-              for old_url in image_refs:
-                  old_url_clean = old_url.strip()
-                  old_file_path = old_url_clean.lstrip('/')
+              for old_url in find_image_paths(content):
+                  old_file_path = old_url.lstrip('/')
+
+                  # Already processed this file (duplicate reference in same .md)
+                  if old_file_path in seen_files:
+                      if old_url != seen_files[old_file_path]:
+                          content = content.replace(old_url, seen_files[old_file_path])
+                          changed = True
+                      continue
+
                   if not os.path.exists(old_file_path):
                       continue
+
                   filename = os.path.basename(old_file_path)
                   ext = os.path.splitext(filename)[1].lower()
                   if not ext:
                       continue
-                  if re.match(rf'^{re.escape(slug)}-\d+\{ext}$', filename):
+
+                  correct_name = bool(re.match(rf'^{re.escape(slug)}-\d+\{ext}$', filename))
+                  correct_dir = (os.path.dirname(old_file_path) == UPLOADS)
+
+                  if correct_name and correct_dir:
+                      correct_url = '/' + old_file_path
+                      seen_files[old_file_path] = correct_url
+                      if old_url != correct_url:
+                          content = content.replace(old_url, correct_url)
+                          changed = True
                       continue
 
-                  dir_path = os.path.dirname(old_file_path)
+                  # Find next available number
                   key = (slug, ext)
                   if key not in counters:
-                      existing_nums = []
-                      if os.path.exists(dir_path):
-                          for fn in os.listdir(dir_path):
-                              m = re.match(rf'^{re.escape(slug)}-(\d+){re.escape(ext)}$', fn)
-                              if m:
-                                  existing_nums.append(int(m.group(1)))
-                      counters[key] = max(existing_nums) + 1 if existing_nums else 1
+                      nums = []
+                      for fn in os.listdir(UPLOADS):
+                          m = re.match(rf'^{re.escape(slug)}-(\d+){re.escape(ext)}$', fn)
+                          if m:
+                              nums.append(int(m.group(1)))
+                      counters[key] = max(nums) + 1 if nums else 1
 
                   num = counters[key]
-                  counters[key] += 1
                   new_filename = f"{slug}-{num}{ext}"
-                  new_file_path = os.path.join(dir_path, new_filename)
-                  new_url = '/' + new_file_path
+                  new_path = os.path.join(UPLOADS, new_filename)
+                  while os.path.exists(new_path):
+                      num += 1
+                      new_filename = f"{slug}-{num}{ext}"
+                      new_path = os.path.join(UPLOADS, new_filename)
+                  counters[key] = num + 1
 
-                  shutil.move(old_file_path, new_file_path)
-                  content = content.replace(old_url_clean, new_url)
+                  new_url = '/' + new_path
+                  shutil.move(old_file_path, new_path)
+                  seen_files[old_file_path] = new_url
+                  content = content.replace(old_url, new_url)
                   changed = True
-                  print(f"Renamed: {old_file_path} -> {new_file_path}")
+                  print(f"Renamed: {old_file_path} -> {new_path}")
 
               if changed:
                   with open(md_path, 'w', encoding='utf-8') as f:
@@ -90,7 +122,7 @@ jobs:
                   print(f"Updated: {md_path}")
           EOF
 
-      - name: Commit renamed files
+      - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
