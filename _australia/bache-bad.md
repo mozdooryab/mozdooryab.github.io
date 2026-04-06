@@ -1,6 +1,6 @@
 ---
 layout: person
-published: yes
+published: no
 name_fa: بچه بد
 name_en: bache bad
 slug: bache bad
