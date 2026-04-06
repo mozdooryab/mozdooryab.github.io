@@ -2,8 +2,9 @@
 layout: default
 ---
 
-{% if page.published == "no" %}
-<script>window.location.replace('/');</script>
+{% assign pub = page.published | downcase | strip %}
+{% if pub == "no" or pub == "false" %}
+<script>window.location.replace('{{ "/" | absolute_url }}');</script>
 {% endif %}
 
 <article class="person-page">
