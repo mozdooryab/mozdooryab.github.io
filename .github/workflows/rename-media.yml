@@ -55,6 +55,7 @@ jobs:
               upload_files[fn] = os.path.join(UPLOADS, fn)
 
           # Step 3: Process each .md file
+          rename_map = {}  # original filename -> new_url
           for md_path in sorted(glob.glob('_australia/*.md')):
               with open(md_path, 'r', encoding='utf-8') as f:
                   content = f.read()
@@ -116,10 +117,15 @@ jobs:
                           shutil.move(old_path, new_path)
                           upload_files[new_filename] = new_path
                           del upload_files[filename]
+                          rename_map[filename] = new_url
                           print(f"Renamed: {old_path} -> {new_path}")
                           new_url = f'/assets/uploads/{new_filename}'
                           new_lines.append(f"{prefix}{new_url}")
                           changed = True
+                          elif filename in rename_map:
+    # این فایل قبلاً rename شده، فقط path رو آپدیت کن
+    new_lines.append(f"{prefix}{rename_map[filename]}")
+    changed = True
                       else:
                           new_lines.append(line)
                   else:
