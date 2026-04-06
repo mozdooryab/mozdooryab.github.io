@@ -1,6 +1,6 @@
 ---
 layout: person
-published: yes
+active: ''
 name_fa: مهدی شفیعی
 name_en: Mahdi Shafiei
 slug: Mahdi Shafiei
@@ -17,7 +17,7 @@ gallery_image_1: /assets/uploads/mahdi-shafiei-1.png
 gallery_image_2: /assets/uploads/mahdi-shafiei-2.png
 gallery_image_3: /assets/uploads/mahdi-shafiei-2.jpg
 gallery_image_4: /assets/uploads/mahdi-shafiei-3.jpg
-gallery_image_5: ''
+gallery_image_5: assets/uploads/mahdi-shafiei/pasted-image-1775466364339.png
 gallery_image_6: ''
 gallery_image_7: ''
 gallery_image_8: ''
@@ -26,6 +26,7 @@ video_url_2: ''
 video_url_3: ''
 video_url_4: ''
 tags_text: '#مزدور_رژیم_در_استرالیا'
+published: yes
 ---
 
 **مهدی شفیعی - Mahdi Shafiei**
