@@ -16,7 +16,7 @@ featured_image: /assets/uploads/sahar-moradi-1.png
 gallery_image_1: /assets/uploads/sahar-moradi-2.png
 gallery_image_2: /assets/uploads/sahar-moradi-3.png
 gallery_image_3: /assets/uploads/sahar-moradi-4.png
-gallery_image_4: assets/uploads/sahar-moradi/pasted-image-1775464273609.png
+gallery_image_4: /assets/uploads/sahar-moradi-1.png
 gallery_image_5: ''
 gallery_image_6: ''
 gallery_image_7: ''
