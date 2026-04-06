@@ -1,11 +1,13 @@
 ---
 layout: person
-title: "سارا جانسون | Sara Johnson"
-name_fa: "سارا جانسون"
-name_en: "Sara Johnson"
-slug: "sara-johnson"
-city: "Adelaide"
-featured_image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=80"
+published: no
+name_fa: سارا جانسون
+name_en: Sara Johnson
+slug: sara-johnson
+city: Adelaide
+role: ''
+featured_image: https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=80
+title: سارا جانسون | Sara Johnson
 ---
 
 این یک متن نمونه برای صفحه شخص است.
