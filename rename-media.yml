@@ -1,0 +1,85 @@
+name: Auto-rename uploaded media
+on:
+  push:
+    paths:
+      - '_australia/**'
+
+jobs:
+  rename-media:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 2
+
+      - name: Rename images and update references
+        run: |
+          python3 << 'EOF'
+          import os, re, shutil, subprocess
+
+          result = subprocess.run(
+              ['git', 'diff', '--name-only', 'HEAD~1', 'HEAD'],
+              capture_output=True, text=True
+          )
+          changed_mds = [f for f in result.stdout.strip().split('\n')
+                         if f.startswith('_australia/') and f.endswith('.md')]
+
+          for md_path in changed_mds:
+              if not os.path.exists(md_path):
+                  continue
+              with open(md_path, 'r', encoding='utf-8') as f:
+                  content = f.read()
+
+              slug = os.path.splitext(os.path.basename(md_path))[0]
+              image_refs = re.findall(r'/assets/uploads/[^\s\'">\)]+', content)
+              counters = {}
+              changed = False
+
+              for old_url in image_refs:
+                  old_file_path = old_url.lstrip('/')
+                  if not os.path.exists(old_file_path):
+                      continue
+                  filename = os.path.basename(old_file_path)
+                  ext = os.path.splitext(filename)[1].lower()
+                  if not ext:
+                      continue
+                  if re.match(rf'^{re.escape(slug)}-\d+\{ext}$', filename):
+                      continue
+
+                  dir_path = os.path.dirname(old_file_path)
+                  key = (slug, ext)
+                  if key not in counters:
+                      existing_nums = []
+                      if os.path.exists(dir_path):
+                          for fn in os.listdir(dir_path):
+                              m = re.match(rf'^{re.escape(slug)}-(\d+){re.escape(ext)}$', fn)
+                              if m:
+                                  existing_nums.append(int(m.group(1)))
+                      counters[key] = max(existing_nums) + 1 if existing_nums else 1
+
+                  num = counters[key]
+                  counters[key] += 1
+                  new_filename = f"{slug}-{num}{ext}"
+                  new_file_path = os.path.join(dir_path, new_filename)
+                  new_url = '/' + new_file_path
+
+                  shutil.move(old_file_path, new_file_path)
+                  content = content.replace(old_url, new_url)
+                  changed = True
+                  print(f"Renamed: {old_file_path} -> {new_file_path}")
+
+              if changed:
+                  with open(md_path, 'w', encoding='utf-8') as f:
+                      f.write(content)
+                  print(f"Updated references in: {md_path}")
+          EOF
+
+      - name: Commit renamed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --staged --quiet || git commit -m "Auto-rename media files [skip ci]"
+          git push
