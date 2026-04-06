@@ -17,7 +17,7 @@ gallery_image_1: /assets/uploads/mahdi-shafiei-1.png
 gallery_image_2: /assets/uploads/mahdi-shafiei-2.png
 gallery_image_3: /assets/uploads/mahdi-shafiei-2.jpg
 gallery_image_4: /assets/uploads/mahdi-shafiei-3.jpg
-gallery_image_5: assets/uploads/mahdi-shafiei/pasted-image-1775466364339.png
+gallery_image_5: /assets/uploads/mahdi-shafiei-3.png
 gallery_image_6: ''
 gallery_image_7: ''
 gallery_image_8: ''
