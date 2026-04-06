@@ -3,7 +3,7 @@ layout: default
 ---
 
 {% assign pub = page.published | downcase | strip %}
-{% if pub == "no" or pub == "false" %}
+{% if pub == "no" or pub == "false" or pub == "off" %}
 <script>window.location.replace('{{ "/" | absolute_url }}');</script>
 {% endif %}
 
