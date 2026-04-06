@@ -1,6 +1,6 @@
 ---
 layout: person
-published: yes
+published: no
 name_fa: آقا خره
 name_en: agha khare
 slug: agha khare
