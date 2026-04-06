@@ -8,9 +8,9 @@ city: ملبورن استرالیا
 role: ''
 email: ''
 phone: ''
-linkedin: ''
+linkedin: abbas-sharzei
 instagram: ''
-facebook: ''
+facebook: abbas.sharzei
 telegram: ''
 featured_image: /assets/uploads/Abbas-Sharzei.webp
 gallery_image_1: /assets/uploads/HD2rxmaboAMC7oU.jfif
