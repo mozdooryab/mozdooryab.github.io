@@ -12,11 +12,11 @@ linkedin: ''
 instagram: sia_zarsav | sya_zarsav
 facebook: ''
 telegram: ''
-featured_image: assets/uploads/siavash-zarsav/pasted-image-1775466081928.png
-gallery_image_1: assets/uploads/siavash-zarsav/pasted-image-1775465638486.png
-gallery_image_2: assets/uploads/siavash-zarsav/pasted-image-1775465645538.png
-gallery_image_3: assets/uploads/siavash-zarsav/pasted-image-1775465650917.png
-gallery_image_4: assets/uploads/siavash-zarsav/pasted-image-1775465657836.png
+featured_image: /assets/uploads/siavash-zarsav-1.png
+gallery_image_1: /assets/uploads/siavash-zarsav-2.png
+gallery_image_2: /assets/uploads/siavash-zarsav-3.png
+gallery_image_3: /assets/uploads/siavash-zarsav-4.png
+gallery_image_4: /assets/uploads/siavash-zarsav-5.png
 gallery_image_5: ''
 gallery_image_6: ''
 gallery_image_7: ''
