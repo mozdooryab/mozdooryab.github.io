@@ -12,9 +12,9 @@ linkedin: ''
 instagram: goldenpaintinganddecorating
 facebook: ''
 telegram: ''
-featured_image: assets/uploads/ali-akbar-jalilian/pasted-image-1775958980087.png
-gallery_image_1: assets/uploads/ali-akbar-jalilian/pasted-image-1775959013298.png
-gallery_image_2: assets/uploads/ali-akbar-jalilian/pasted-image-1775959031013.png
+featured_image: /assets/uploads/ali-akbar-jalilian-1.png
+gallery_image_1: /assets/uploads/ali-akbar-jalilian-2.png
+gallery_image_2: /assets/uploads/ali-akbar-jalilian-3.png
 gallery_image_3: ''
 gallery_image_4: ''
 gallery_image_5: ''
