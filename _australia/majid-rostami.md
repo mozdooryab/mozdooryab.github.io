@@ -32,9 +32,11 @@ tags_text: '#مزدور_رژیم_در_استرالیا'
 سیدنی استرالیا
 حضور فعال در تجمع حامیان جمهوری اسلامی در سیدنی در مارچ و آپریل 2026
 
-روایت فیلم بردار (https://x.com/MaxxShams) در مورد ویدیو منتشر شده در این صفحه: 
+روایت فیلم بردار ([MaxxShams](https://x.com/MaxxShams/status/2043238721055793557?s=20)) در مورد ویدیو منتشر شده در این صفحه: 
 _این ۳ نفر به سمت من هجوم آوردن، مثل همیشه خارج از جمعیت و کنار پلیس ایستاده بودم.خیلی خوشحالم پلیس اونجا بود!_
 
-مصاحبه ایشون در جنگ 12 روزه در حمایت از جمهوری اسلامی: [اینجا](https://www.smh.com.au/national/nsw/sydney-s-iranian-community-is-usually-divided-that-changed-when-the-bombs-fell-20250625-p5ma32.html)
+مصاحبه ایشون در جنگ 12 روزه در حمایت از جمهوری اسلامی: [**اینجا**](https://www.smh.com.au/national/nsw/sydney-s-iranian-community-is-usually-divided-that-changed-when-the-bombs-fell-20250625-p5ma32.html)
 
-#مزدور_رژیم_در_استرالیا
+[**https://www.smh.com.au/national/nsw/sydney-s-iranian-community-is-usually-divided-that-changed-when-the-bombs-fell-20250625-p5ma32.html**](https://www.smh.com.au/national/nsw/sydney-s-iranian-community-is-usually-divided-that-changed-when-the-bombs-fell-20250625-p5ma32.html)
+
+[#مزدور_رژیم_در_استرالیا](https://x.com/search?q=%23%D9%85%D8%B2%D8%AF%D9%88%D8%B1_%D8%B1%DA%98%DB%8C%D9%85_%D8%AF%D8%B1_%D8%A7%D8%B3%D8%AA%D8%B1%D8%A7%D9%84%DB%8C%D8%A7&src=hashtag_click)
