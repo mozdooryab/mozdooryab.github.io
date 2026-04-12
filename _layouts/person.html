@@ -379,6 +379,24 @@ layout: default
   .prose h2, .prose h3, .prose h4 { margin-top: 1.8em; margin-bottom: .8em; }
   .prose ul, .prose ol { margin: 0 0 1.2em; padding-right: 1.5em; }
 
+  .prose a {
+  color: #2563eb;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color .2s;
+}
+.prose a:hover {
+  color: #1d4ed8;
+}
+
+[data-theme="dark"] .prose a,
+.dark .prose a {
+  color: #60a5fa;
+}
+[data-theme="dark"] .prose a:hover,
+.dark .prose a:hover {
+  color: #93c5fd;
+}
   .gallery-section { padding: 0; }
 
   .gallery-section h2 {
@@ -612,4 +630,9 @@ layout: default
     if (e.key === 'ArrowLeft') changeImage(1);
     if (e.key === 'ArrowRight') changeImage(-1);
   });
+  // باز کردن همه لینک‌های محتوا در تب جدید
+  document.querySelectorAll('.prose a').forEach(function(a) {
+  a.setAttribute('target', '_blank');
+  a.setAttribute('rel', 'noopener noreferrer');
+});
 </script>
