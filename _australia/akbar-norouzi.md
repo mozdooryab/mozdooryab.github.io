@@ -12,9 +12,9 @@ linkedin: ''
 instagram: ''
 facebook: ''
 telegram: ''
-featured_image: assets/uploads/akbar-norouzi/image (5).jpg
-gallery_image_1: assets/uploads/akbar-norouzi/image (3).jpg
-gallery_image_2: assets/uploads/akbar-norouzi/image (4).jpg
+featured_image: /assets/uploads/akbar-norouzi-1.jpg
+gallery_image_1: /assets/uploads/akbar-norouzi-2.jpg
+gallery_image_2: /assets/uploads/akbar-norouzi-3.jpg
 gallery_image_3: ''
 gallery_image_4: ''
 gallery_image_5: ''
