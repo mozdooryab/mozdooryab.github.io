@@ -12,9 +12,9 @@ linkedin: hamid-reza-noferesti-12621946
 instagram: ''
 facebook: ''
 telegram: ''
-featured_image: assets/uploads/hamid-reza-noferesti/image (20).jpg
-gallery_image_1: assets/uploads/hamid-reza-noferesti/image (21).jpg
-gallery_image_2: assets/uploads/hamid-reza-noferesti/image (22).jpg
+featured_image: /assets/uploads/hamid-reza-noferesti-1.jpg
+gallery_image_1: /assets/uploads/hamid-reza-noferesti-2.jpg
+gallery_image_2: /assets/uploads/hamid-reza-noferesti-3.jpg
 gallery_image_3: ''
 gallery_image_4: ''
 gallery_image_5: ''
