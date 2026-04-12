@@ -12,11 +12,11 @@ linkedin: marzieh-salehi-fadardi-75865312a
 instagram: ''
 facebook: marzieh.salehi.fadardi
 telegram: ''
-featured_image: assets/uploads/marzieh-salehi-fadardi/pasted-image-1775972211076.png
-gallery_image_1: assets/uploads/marzieh-salehi-fadardi/pasted-image-1775972221832.png
-gallery_image_2: assets/uploads/marzieh-salehi-fadardi/pasted-image-1775972228299.png
-gallery_image_3: assets/uploads/marzieh-salehi-fadardi/pasted-image-1775972232240.png
-gallery_image_4: assets/uploads/marzieh-salehi-fadardi/pasted-image-1775972211076.png
+featured_image: /assets/uploads/marzieh-salehi-fadardi-1.png
+gallery_image_1: /assets/uploads/marzieh-salehi-fadardi-2.png
+gallery_image_2: /assets/uploads/marzieh-salehi-fadardi-3.png
+gallery_image_3: /assets/uploads/marzieh-salehi-fadardi-4.png
+gallery_image_4: /assets/uploads/marzieh-salehi-fadardi-1.png
 gallery_image_5: ''
 gallery_image_6: ''
 gallery_image_7: ''
