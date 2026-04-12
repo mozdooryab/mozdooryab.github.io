@@ -12,9 +12,9 @@ linkedin: mohammad-m-mohammadi-12665a140
 instagram: ''
 facebook: MMMohammadi01
 telegram: ''
-featured_image: assets/uploads/mohammad-m-mohammadi/image (1).jpg
-gallery_image_1: assets/uploads/mohammad-m-mohammadi/image (1).jpg
-gallery_image_2: assets/uploads/mohammad-m-mohammadi/image (2).jpg
+featured_image: /assets/uploads/mohammad-m-mohammadi-1.jpg
+gallery_image_1: /assets/uploads/mohammad-m-mohammadi-1.jpg
+gallery_image_2: /assets/uploads/mohammad-m-mohammadi-2.jpg
 gallery_image_3: ''
 gallery_image_4: ''
 gallery_image_5: ''
