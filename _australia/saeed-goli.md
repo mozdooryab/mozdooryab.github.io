@@ -5,7 +5,7 @@ name_fa: سعید گلی
 name_en: Saeed Goli
 slug: Saeed Goli
 city: سیدنی استرالیا
-role: Project Manager @ Alborz Homes PTY LTD
+role: مداح در سیدنی و Project Manager @ Alborz Homes PTY LTD
 email: ''
 phone: ''
 linkedin: ''
