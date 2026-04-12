@@ -12,13 +12,13 @@ linkedin: keyvan-aziziazar-aaa58754
 instagram: k1azizi1981
 facebook: keyvan.azizi.73041
 telegram: ''
-featured_image: assets/uploads/keyvan-azizi-azar/image (23).jpg
-gallery_image_1: assets/uploads/keyvan-azizi-azar/image (24).jpg
-gallery_image_2: assets/uploads/keyvan-azizi-azar/image (25).jpg
-gallery_image_3: assets/uploads/keyvan-azizi-azar/pasted-image-1776002238446.png
-gallery_image_4: assets/uploads/keyvan-azizi-azar/image (27).jpg
-gallery_image_5: assets/uploads/keyvan-azizi-azar/image (28).jpg
-gallery_image_6: assets/uploads/keyvan-azizi-azar/image (29).jpg
+featured_image: /assets/uploads/keyvan-azizi-azar-1.jpg
+gallery_image_1: /assets/uploads/keyvan-azizi-azar-2.jpg
+gallery_image_2: /assets/uploads/keyvan-azizi-azar-3.jpg
+gallery_image_3: /assets/uploads/keyvan-azizi-azar-1.png
+gallery_image_4: /assets/uploads/keyvan-azizi-azar-4.jpg
+gallery_image_5: /assets/uploads/keyvan-azizi-azar-5.jpg
+gallery_image_6: /assets/uploads/keyvan-azizi-azar-6.jpg
 gallery_image_7: ''
 gallery_image_8: ''
 video_url_1: ''
