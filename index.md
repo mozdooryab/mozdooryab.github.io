@@ -1,15 +1,15 @@
 ---
 layout: default
-title: "خانه"
+title: "مزیاب - مزدوران رژیم در استرالیا"
 ---
 
 <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:24px;">
-  <h1 style="margin:0;">فهرست افراد</h1>
+  <h1 style="margin:0;">حامیان و مزدوران جمهوری اسلامی در استرالیا</h1>
   <div style="position:relative;width:min(340px,100%);">
     <input
       id="searchInput"
       type="search"
-      placeholder="جستجو... نام، شهر، سمت"
+      placeholder="جستجو... نام، شهر، شغل"
       autocomplete="off"
       style="width:100%;padding:10px 44px 10px 16px;border:1px solid var(--border);border-radius:999px;background:var(--surface);color:var(--text);font-family:inherit;font-size:1rem;outline:none;"
     >
