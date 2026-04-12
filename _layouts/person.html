@@ -175,8 +175,9 @@ layout: default
         <div class="video-card">
           {% assign vid1 = page.video_url_1 %}
           {% if vid1 contains 'youtube.com' or vid1 contains 'youtu.be' %}
-            {% assign yt_id1 = vid1 | split: 'v=' | last | split: '&' | first %}
-            {% if vid1 contains 'youtu.be' %}{% assign yt_id1 = vid1 | split: 'youtu.be/' | last | split: '?' | first %}{% endif %}
+           {% assign yt_id1 = vid1 | split: 'v=' | last | split: '&' | first %}
+{% if vid1 contains 'youtu.be' %}{% assign yt_id1 = vid1 | split: 'youtu.be/' | last | split: '?' | first %}{% endif %}
+{% if vid1 contains '/shorts/' %}{% assign yt_id1 = vid1 | split: '/shorts/' | last | split: '?' | first %}{% endif %}
             <iframe src="https://www.youtube.com/embed/{{ yt_id1 }}" frameborder="0" allowfullscreen loading="lazy"></iframe>
           {% else %}
             <video controls preload="metadata"><source src="{{ vid1 }}"></video>
