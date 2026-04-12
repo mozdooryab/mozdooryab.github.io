@@ -176,8 +176,8 @@ layout: default
           {% assign vid1 = page.video_url_1 %}
           {% if vid1 contains 'youtube.com' or vid1 contains 'youtu.be' %}
            {% assign yt_id1 = vid1 | split: 'v=' | last | split: '&' | first %}
-{% if vid1 contains 'youtu.be' %}{% assign yt_id1 = vid1 | split: 'youtu.be/' | last | split: '?' | first %}{% endif %}
-{% if vid1 contains '/shorts/' %}{% assign yt_id1 = vid1 | split: '/shorts/' | last | split: '?' | first %}{% endif %}
+             {% if vid1 contains 'youtu.be' %}{% assign yt_id1 = vid1 | split: 'youtu.be/' | last | split: '?' | first %}{% endif %}
+             {% if vid1 contains '/shorts/' %}{% assign yt_id1 = vid1 | split: '/shorts/' | last | split: '?' | first %}{% endif %}
             <iframe src="https://www.youtube.com/embed/{{ yt_id1 }}" frameborder="0" allowfullscreen loading="lazy"></iframe>
           {% else %}
             <video controls preload="metadata"><source src="{{ vid1 }}"></video>
@@ -189,7 +189,8 @@ layout: default
           {% assign vid2 = page.video_url_2 %}
           {% if vid2 contains 'youtube.com' or vid2 contains 'youtu.be' %}
             {% assign yt_id2 = vid2 | split: 'v=' | last | split: '&' | first %}
-            {% if vid2 contains 'youtu.be' %}{% assign yt_id2 = vid2 | split: 'youtu.be/' | last | split: '?' | first %}{% endif %}
+              {% if vid2 contains 'youtu.be' %}{% assign yt_id2 = vid2 | split: 'youtu.be/' | last | split: '?' | first %}{% endif %}
+              {% if vid2 contains '/shorts/' %}{% assign yt_id2 = vid2 | split: '/shorts/' | last | split: '?' | first %}{% endif %}
             <iframe src="https://www.youtube.com/embed/{{ yt_id2 }}" frameborder="0" allowfullscreen loading="lazy"></iframe>
           {% else %}
             <video controls preload="metadata"><source src="{{ vid2 }}"></video>
@@ -201,7 +202,8 @@ layout: default
           {% assign vid3 = page.video_url_3 %}
           {% if vid3 contains 'youtube.com' or vid3 contains 'youtu.be' %}
             {% assign yt_id3 = vid3 | split: 'v=' | last | split: '&' | first %}
-            {% if vid3 contains 'youtu.be' %}{% assign yt_id3 = vid3 | split: 'youtu.be/' | last | split: '?' | first %}{% endif %}
+              {% if vid3 contains 'youtu.be' %}{% assign yt_id3 = vid3 | split: 'youtu.be/' | last | split: '?' | first %}{% endif %}
+              {% if vid3 contains '/shorts/' %}{% assign yt_id3 = vid3 | split: '/shorts/' | last | split: '?' | first %}{% endif %}
             <iframe src="https://www.youtube.com/embed/{{ yt_id3 }}" frameborder="0" allowfullscreen loading="lazy"></iframe>
           {% else %}
             <video controls preload="metadata"><source src="{{ vid3 }}"></video>
@@ -213,7 +215,8 @@ layout: default
           {% assign vid4 = page.video_url_4 %}
           {% if vid4 contains 'youtube.com' or vid4 contains 'youtu.be' %}
             {% assign yt_id4 = vid4 | split: 'v=' | last | split: '&' | first %}
-            {% if vid4 contains 'youtu.be' %}{% assign yt_id4 = vid4 | split: 'youtu.be/' | last | split: '?' | first %}{% endif %}
+              {% if vid4 contains 'youtu.be' %}{% assign yt_id4 = vid4 | split: 'youtu.be/' | last | split: '?' | first %}{% endif %}
+              {% if vid4 contains '/shorts/' %}{% assign yt_id4 = vid4 | split: '/shorts/' | last | split: '?' | first %}{% endif %}
             <iframe src="https://www.youtube.com/embed/{{ yt_id4 }}" frameborder="0" allowfullscreen loading="lazy"></iframe>
           {% else %}
             <video controls preload="metadata"><source src="{{ vid4 }}"></video>
