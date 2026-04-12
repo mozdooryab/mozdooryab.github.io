@@ -21,7 +21,7 @@ gallery_image_5: ''
 gallery_image_6: ''
 gallery_image_7: ''
 gallery_image_8: ''
-video_url_1: https://youtube.com/shorts/eTm_HJQhHnk?feature=share
+video_url_1: https://youtube.com/shorts/eTm_HJQhHnk
 video_url_2: ''
 video_url_3: ''
 video_url_4: ''
