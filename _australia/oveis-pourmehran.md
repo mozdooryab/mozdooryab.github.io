@@ -12,11 +12,11 @@ linkedin: oveis-pourmehran-a37553110
 instagram: ''
 facebook: ''
 telegram: ''
-featured_image: assets/uploads/oveis-pourmehran/pasted-image-1775991335478.png
-gallery_image_1: assets/uploads/oveis-pourmehran/pasted-image-1775991335478.png
-gallery_image_2: assets/uploads/oveis-pourmehran/image.jpg
-gallery_image_3: assets/uploads/oveis-pourmehran/SnapSave.ai_AQO6zPiVAsnn45uAD858s3UEKykqk4ZZ_cHWkrb6nTBF6Ys9ygllgptrJ1JDBsmuom_YDqzRPpvQMoV-hAOSFfx60w5H8dgkXteRlDQ_720p_(HD) - frame at 0m25s.jpg
-gallery_image_4: assets/uploads/oveis-pourmehran/SnapSave.ai_AQO6zPiVAsnn45uAD858s3UEKykqk4ZZ_cHWkrb6nTBF6Ys9ygllgptrJ1JDBsmuom_YDqzRPpvQMoV-hAOSFfx60w5H8dgkXteRlDQ_720p_(HD) - frame at 0m24s.jpg
+featured_image: /assets/uploads/oveis-pourmehran-1.png
+gallery_image_1: /assets/uploads/oveis-pourmehran-1.png
+gallery_image_2: /assets/uploads/oveis-pourmehran-1.jpg
+gallery_image_3: /assets/uploads/oveis-pourmehran-2.jpg
+gallery_image_4: /assets/uploads/oveis-pourmehran-3.jpg
 gallery_image_5: ''
 gallery_image_6: ''
 gallery_image_7: ''
