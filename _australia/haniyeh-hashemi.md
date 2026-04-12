@@ -12,10 +12,10 @@ linkedin: ''
 instagram: ''
 facebook: ''
 telegram: ''
-featured_image: assets/uploads/haniyeh-hashemi/image (17).jpg
-gallery_image_1: assets/uploads/haniyeh-hashemi/image (16).jpg
-gallery_image_2: assets/uploads/haniyeh-hashemi/image (15).jpg
-gallery_image_3: assets/uploads/haniyeh-hashemi/image (14).jpg
+featured_image: /assets/uploads/haniyeh-hashemi-1.jpg
+gallery_image_1: /assets/uploads/haniyeh-hashemi-2.jpg
+gallery_image_2: /assets/uploads/haniyeh-hashemi-3.jpg
+gallery_image_3: /assets/uploads/haniyeh-hashemi-4.jpg
 gallery_image_4: ''
 gallery_image_5: ''
 gallery_image_6: ''
