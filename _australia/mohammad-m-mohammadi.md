@@ -22,7 +22,7 @@ gallery_image_6: ''
 gallery_image_7: ''
 gallery_image_8: ''
 video_url_1: https://youtube.com/shorts/Hc8a5OHVIsQ?feature=share
-video_url_2: ''
+video_url_2: https://youtube.com/shorts/6GCG-zXK570?feature=share
 video_url_3: ''
 video_url_4: ''
 tags_text: '#مزدور_رژیم_در_استرالیا'
