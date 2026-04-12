@@ -12,8 +12,8 @@ linkedin: ''
 instagram: ''
 facebook: ''
 telegram: ''
-featured_image: assets/uploads/majid-rostami/pasted-image-1775983303621.png
-gallery_image_1: assets/uploads/majid-rostami/pasted-image-1775983992933.png
+featured_image: /assets/uploads/majid-rostami-1.png
+gallery_image_1: /assets/uploads/majid-rostami-2.png
 gallery_image_2: ''
 gallery_image_3: ''
 gallery_image_4: ''
