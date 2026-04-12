@@ -12,11 +12,11 @@ linkedin: ''
 instagram: ''
 facebook: ''
 telegram: ''
-featured_image: assets/uploads/mahsa-borzouyan-dastjerdi/image (31).jpg
-gallery_image_1: assets/uploads/mahsa-borzouyan-dastjerdi/image (30).jpg
-gallery_image_2: assets/uploads/mahsa-borzouyan-dastjerdi/image (32).jpg
-gallery_image_3: assets/uploads/mahsa-borzouyan-dastjerdi/image (33).jpg
-gallery_image_4: assets/uploads/mahsa-borzouyan-dastjerdi/image (34).jpg
+featured_image: /assets/uploads/mahsa-borzouyan-dastjerdi-1.jpg
+gallery_image_1: /assets/uploads/mahsa-borzouyan-dastjerdi-2.jpg
+gallery_image_2: /assets/uploads/mahsa-borzouyan-dastjerdi-3.jpg
+gallery_image_3: /assets/uploads/mahsa-borzouyan-dastjerdi-4.jpg
+gallery_image_4: /assets/uploads/mahsa-borzouyan-dastjerdi-5.jpg
 gallery_image_5: ''
 gallery_image_6: ''
 gallery_image_7: ''
