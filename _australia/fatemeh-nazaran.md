@@ -12,12 +12,12 @@ linkedin: ''
 instagram: ''
 facebook: ''
 telegram: ''
-featured_image: assets/uploads/fatemeh-nazaran/image (12).jpg
-gallery_image_1: assets/uploads/fatemeh-nazaran/pasted-image-1775999409650.png
-gallery_image_2: assets/uploads/fatemeh-nazaran/image (9).jpg
-gallery_image_3: assets/uploads/fatemeh-nazaran/image (10).jpg
-gallery_image_4: assets/uploads/fatemeh-nazaran/image (11).jpg
-gallery_image_5: assets/uploads/fatemeh-nazaran/image (13).jpg
+featured_image: /assets/uploads/fatemeh-nazaran-1.jpg
+gallery_image_1: /assets/uploads/fatemeh-nazaran-1.png
+gallery_image_2: /assets/uploads/fatemeh-nazaran-2.jpg
+gallery_image_3: /assets/uploads/fatemeh-nazaran-3.jpg
+gallery_image_4: /assets/uploads/fatemeh-nazaran-4.jpg
+gallery_image_5: /assets/uploads/fatemeh-nazaran-5.jpg
 gallery_image_6: ''
 gallery_image_7: ''
 gallery_image_8: ''
