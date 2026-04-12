@@ -12,9 +12,9 @@ linkedin: ''
 instagram: ''
 facebook: ''
 telegram: ''
-featured_image: assets/uploads/seyed-alireza-motevallian/image (6).jpg
-gallery_image_1: assets/uploads/seyed-alireza-motevallian/pasted-image-1775998856004.png
-gallery_image_2: assets/uploads/seyed-alireza-motevallian/image (7).jpg
+featured_image: /assets/uploads/seyed-alireza-motevallian-1.jpg
+gallery_image_1: /assets/uploads/seyed-alireza-motevallian-1.png
+gallery_image_2: /assets/uploads/seyed-alireza-motevallian-2.jpg
 gallery_image_3: ''
 gallery_image_4: ''
 gallery_image_5: ''
