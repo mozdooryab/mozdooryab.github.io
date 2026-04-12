@@ -12,11 +12,11 @@ linkedin: ''
 instagram: vahid_keyvan1
 facebook: ''
 telegram: ''
-featured_image: assets/uploads/vahid-keyvan/pasted-image-1775956026272.png
-gallery_image_1: assets/uploads/vahid-keyvan/pasted-image-1775955276079.png
-gallery_image_2: assets/uploads/vahid-keyvan/pasted-image-1775955934820.png
-gallery_image_3: assets/uploads/vahid-keyvan/pasted-image-1775955961594.png
-gallery_image_4: assets/uploads/vahid-keyvan/pasted-image-1775956049536.png
+featured_image: /assets/uploads/vahid-keyvan-1.png
+gallery_image_1: /assets/uploads/vahid-keyvan-2.png
+gallery_image_2: /assets/uploads/vahid-keyvan-3.png
+gallery_image_3: /assets/uploads/vahid-keyvan-4.png
+gallery_image_4: /assets/uploads/vahid-keyvan-5.png
 gallery_image_5: ''
 gallery_image_6: ''
 gallery_image_7: ''
