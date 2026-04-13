@@ -12,10 +12,10 @@ linkedin: ''
 instagram: ''
 facebook: ''
 telegram: ''
-featured_image: assets/uploads/baharan-majidi/image (9).jpg
-gallery_image_1: assets/uploads/baharan-majidi/image (6).jpg
-gallery_image_2: assets/uploads/baharan-majidi/image (8).jpg
-gallery_image_3: assets/uploads/baharan-majidi/image (10).jpg
+featured_image: /assets/uploads/baharan-majidi-1.jpg
+gallery_image_1: /assets/uploads/baharan-majidi-2.jpg
+gallery_image_2: /assets/uploads/baharan-majidi-3.jpg
+gallery_image_3: /assets/uploads/baharan-majidi-4.jpg
 gallery_image_4: ''
 gallery_image_5: ''
 gallery_image_6: ''
