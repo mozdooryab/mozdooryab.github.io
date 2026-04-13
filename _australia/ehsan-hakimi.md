@@ -12,12 +12,12 @@ linkedin: ''
 instagram: ehsan_irani_1
 facebook: ''
 telegram: ''
-featured_image: assets/uploads/ehsan-hakimi/image (15).jpg
-gallery_image_1: assets/uploads/ehsan-hakimi/image (16).jpg
-gallery_image_2: assets/uploads/ehsan-hakimi/image (18).jpg
-gallery_image_3: assets/uploads/ehsan-hakimi/image (19).jpg
-gallery_image_4: assets/uploads/ehsan-hakimi/image (15).jpg
-gallery_image_5: assets/uploads/ehsan-hakimi/image (20).jpg
+featured_image: /assets/uploads/ehsan-hakimi-1.jpg
+gallery_image_1: /assets/uploads/ehsan-hakimi-2.jpg
+gallery_image_2: /assets/uploads/ehsan-hakimi-3.jpg
+gallery_image_3: /assets/uploads/ehsan-hakimi-4.jpg
+gallery_image_4: /assets/uploads/ehsan-hakimi-1.jpg
+gallery_image_5: /assets/uploads/ehsan-hakimi-5.jpg
 gallery_image_6: ''
 gallery_image_7: ''
 gallery_image_8: ''
