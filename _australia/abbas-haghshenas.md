@@ -12,10 +12,10 @@ linkedin: ''
 instagram: ''
 facebook: ''
 telegram: ''
-featured_image: assets/uploads/abbas-haghshenas/image (11).jpg
-gallery_image_1: assets/uploads/abbas-haghshenas/image (12).jpg
-gallery_image_2: assets/uploads/abbas-haghshenas/image (13).jpg
-gallery_image_3: assets/uploads/abbas-haghshenas/image (14).jpg
+featured_image: /assets/uploads/abbas-haghshenas-1.jpg
+gallery_image_1: /assets/uploads/abbas-haghshenas-2.jpg
+gallery_image_2: /assets/uploads/abbas-haghshenas-3.jpg
+gallery_image_3: /assets/uploads/abbas-haghshenas-4.jpg
 gallery_image_4: ''
 gallery_image_5: ''
 gallery_image_6: ''
