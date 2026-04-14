@@ -14,7 +14,7 @@ defaults:
     values:
       layout: default
 
-- scope:
+  - scope:
       path: "MbgIoljH$gugu8BXqq"
     values:
       sitemap: false
