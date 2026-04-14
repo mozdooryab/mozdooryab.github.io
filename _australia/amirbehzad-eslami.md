@@ -12,10 +12,10 @@ linkedin: amirbehzad
 instagram: ''
 facebook: ''
 telegram: ''
-featured_image: assets/uploads/amirbehzad-eslami/image (13).jpg
-gallery_image_1: assets/uploads/amirbehzad-eslami/pasted-image-1776175568212.png
-gallery_image_2: assets/uploads/amirbehzad-eslami/image (21).jpg
-gallery_image_3: assets/uploads/amirbehzad-eslami/image (22).jpg
+featured_image: /assets/uploads/amirbehzad-eslami-1.jpg
+gallery_image_1: /assets/uploads/amirbehzad-eslami-1.png
+gallery_image_2: /assets/uploads/amirbehzad-eslami-2.jpg
+gallery_image_3: /assets/uploads/amirbehzad-eslami-3.jpg
 gallery_image_4: ''
 gallery_image_5: ''
 gallery_image_6: ''
