@@ -4,7 +4,7 @@ active: yes
 name_fa: اکبر نوروزی
 name_en: Akbar Norouzi
 slug: Akbar Norouzi
-city: ادلاد استرالیا - Adelaide
+city: ادلاید استرالیا - Adelaide
 role: ''
 email: ''
 phone: ''
