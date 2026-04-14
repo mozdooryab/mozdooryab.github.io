@@ -13,5 +13,11 @@ defaults:
       path: ""
     values:
       layout: default
+
+- scope:
+      path: "MbgIoljH$gugu8BXqq"
+    values:
+      sitemap: false
+      
 plugins:
   - jekyll-sitemap
