@@ -12,13 +12,13 @@ linkedin: ''
 instagram: ''
 facebook: ''
 telegram: ''
-featured_image: assets/uploads/mahsa-haidari-pak/pasted-image-1776256417604.png
-gallery_image_1: assets/uploads/mahsa-haidari-pak/image (27).jpg
-gallery_image_2: assets/uploads/mahsa-haidari-pak/image (28).jpg
-gallery_image_3: assets/uploads/mahsa-haidari-pak/image (29).jpg
-gallery_image_4: assets/uploads/mahsa-haidari-pak/image (26).jpg
-gallery_image_5: assets/uploads/mahsa-haidari-pak/image (25).jpg
-gallery_image_6: assets/uploads/mahsa-haidari-pak/pasted-image-1776256417604.png
+featured_image: /assets/uploads/mahsa-haidari-pak-1.png
+gallery_image_1: /assets/uploads/mahsa-haidari-pak-1.jpg
+gallery_image_2: /assets/uploads/mahsa-haidari-pak-2.jpg
+gallery_image_3: /assets/uploads/mahsa-haidari-pak-3.jpg
+gallery_image_4: /assets/uploads/mahsa-haidari-pak-4.jpg
+gallery_image_5: /assets/uploads/mahsa-haidari-pak-5.jpg
+gallery_image_6: /assets/uploads/mahsa-haidari-pak-1.png
 gallery_image_7: ''
 gallery_image_8: ''
 video_url_1: https://youtube.com/shorts/MW37P4MsMW4?feature=share
