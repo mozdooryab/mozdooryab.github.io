@@ -19,8 +19,8 @@ gallery_image_3: /assets/uploads/mahsa-haidari-pak-3.jpg
 gallery_image_4: /assets/uploads/mahsa-haidari-pak-4.jpg
 gallery_image_5: /assets/uploads/mahsa-haidari-pak-5.jpg
 gallery_image_6: /assets/uploads/mahsa-haidari-pak-1.png
-gallery_image_7: assets/uploads/mahsa-haidari-pak/image (31).jpg
-gallery_image_8: assets/uploads/mahsa-haidari-pak/image (32).jpg
+gallery_image_7: /assets/uploads/mahsa-haidari-pak-6.jpg
+gallery_image_8: /assets/uploads/mahsa-haidari-pak-7.jpg
 video_url_1: https://youtube.com/shorts/MW37P4MsMW4?feature=share
 video_url_2: ''
 video_url_3: ''
