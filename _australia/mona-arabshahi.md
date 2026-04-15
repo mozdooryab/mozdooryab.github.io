@@ -12,10 +12,10 @@ linkedin: mona-arabshahi-1161976b
 instagram: ''
 facebook: ''
 telegram: ''
-featured_image: assets/uploads/mona-arabshahi/pasted-image-1776253095053.png
-gallery_image_1: assets/uploads/mona-arabshahi/image (23).jpg
-gallery_image_2: assets/uploads/mona-arabshahi/pasted-image-1776253095053.png
-gallery_image_3: assets/uploads/mona-arabshahi/image (24).jpg
+featured_image: /assets/uploads/mona-arabshahi-1.png
+gallery_image_1: /assets/uploads/mona-arabshahi-1.jpg
+gallery_image_2: /assets/uploads/mona-arabshahi-1.png
+gallery_image_3: /assets/uploads/mona-arabshahi-2.jpg
 gallery_image_4: ''
 gallery_image_5: ''
 gallery_image_6: ''
