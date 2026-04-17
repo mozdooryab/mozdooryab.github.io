@@ -3,6 +3,9 @@ description: مزدوریاب در استرالیا - حامیان و مزدور
 lang: fa
 markdown: kramdown
 
+url: "https://mozyab.com"
+baseurl: ""
+
 collections:
   australia:
     output: true
