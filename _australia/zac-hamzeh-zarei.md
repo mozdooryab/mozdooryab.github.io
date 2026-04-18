@@ -12,14 +12,14 @@ linkedin: ''
 instagram: ''
 facebook: zac.h.zarei
 telegram: ''
-featured_image: assets/uploads/zac-hamzeh-zarei/pasted-image-1776480857400.png
-gallery_image_1: assets/uploads/zac-hamzeh-zarei/image (40).jpg
-gallery_image_2: assets/uploads/zac-hamzeh-zarei/image (39).jpg
-gallery_image_3: assets/uploads/zac-hamzeh-zarei/image (38).jpg
-gallery_image_4: assets/uploads/zac-hamzeh-zarei/image (37).jpg
-gallery_image_5: assets/uploads/zac-hamzeh-zarei/image (41).jpg
-gallery_image_6: assets/uploads/zac-hamzeh-zarei/image (42).jpg
-gallery_image_7: assets/uploads/zac-hamzeh-zarei/image (43).jpg
+featured_image: /assets/uploads/zac-hamzeh-zarei-1.png
+gallery_image_1: /assets/uploads/zac-hamzeh-zarei-1.jpg
+gallery_image_2: /assets/uploads/zac-hamzeh-zarei-2.jpg
+gallery_image_3: /assets/uploads/zac-hamzeh-zarei-3.jpg
+gallery_image_4: /assets/uploads/zac-hamzeh-zarei-4.jpg
+gallery_image_5: /assets/uploads/zac-hamzeh-zarei-5.jpg
+gallery_image_6: /assets/uploads/zac-hamzeh-zarei-6.jpg
+gallery_image_7: /assets/uploads/zac-hamzeh-zarei-7.jpg
 gallery_image_8: ''
 video_url_1: ''
 video_url_2: ''
