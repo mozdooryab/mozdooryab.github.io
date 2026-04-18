@@ -12,10 +12,10 @@ linkedin: zahra-aliakbar-ahovan-a22a09191
 instagram: ''
 facebook: ''
 telegram: ''
-featured_image: assets/uploads/zahra-aliakbar-ahovan/pasted-image-1776472538766.png
-gallery_image_1: assets/uploads/zahra-aliakbar-ahovan/pasted-image-1776472591040.png
-gallery_image_2: assets/uploads/zahra-aliakbar-ahovan/image (33).jpg
-gallery_image_3: assets/uploads/zahra-aliakbar-ahovan/pasted-image-1776472538766.png
+featured_image: /assets/uploads/zahra-aliakbar-ahovan-1.png
+gallery_image_1: /assets/uploads/zahra-aliakbar-ahovan-2.png
+gallery_image_2: /assets/uploads/zahra-aliakbar-ahovan-1.jpg
+gallery_image_3: /assets/uploads/zahra-aliakbar-ahovan-1.png
 gallery_image_4: ''
 gallery_image_5: ''
 gallery_image_6: ''
