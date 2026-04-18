@@ -12,10 +12,10 @@ linkedin: sobhan-salari-shahrbabaki-75992138
 instagram: ''
 facebook: ''
 telegram: ''
-featured_image: assets/uploads/sobhan-salari-shahrbabaki/pasted-image-1776474523760.png
-gallery_image_1: assets/uploads/sobhan-salari-shahrbabaki/image (34).jpg
-gallery_image_2: assets/uploads/sobhan-salari-shahrbabaki/image (35).jpg
-gallery_image_3: assets/uploads/sobhan-salari-shahrbabaki/image (36).jpg
+featured_image: /assets/uploads/sobhan-salari-shahrbabaki-1.png
+gallery_image_1: /assets/uploads/sobhan-salari-shahrbabaki-1.jpg
+gallery_image_2: /assets/uploads/sobhan-salari-shahrbabaki-2.jpg
+gallery_image_3: /assets/uploads/sobhan-salari-shahrbabaki-3.jpg
 gallery_image_4: ''
 gallery_image_5: ''
 gallery_image_6: ''
