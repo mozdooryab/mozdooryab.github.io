@@ -12,10 +12,10 @@ linkedin: behzad-abbasgholi
 instagram: behzad.ahero
 facebook: ''
 telegram: ''
-featured_image: assets/uploads/behzad-abbasgholi/pasted-image-1776561655576.png
-gallery_image_1: assets/uploads/behzad-abbasgholi/image (44).jpg
-gallery_image_2: assets/uploads/behzad-abbasgholi/image (45).jpg
-gallery_image_3: assets/uploads/behzad-abbasgholi/pasted-image-1776561737533.png
+featured_image: /assets/uploads/behzad-abbasgholi-1.png
+gallery_image_1: /assets/uploads/behzad-abbasgholi-1.jpg
+gallery_image_2: /assets/uploads/behzad-abbasgholi-2.jpg
+gallery_image_3: /assets/uploads/behzad-abbasgholi-2.png
 gallery_image_4: ''
 gallery_image_5: ''
 gallery_image_6: ''
