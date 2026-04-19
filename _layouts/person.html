@@ -279,8 +279,7 @@ layout: default
 
   {% if prev_person %}
   <a href="{{ prev_person.url }}" class="person-nav-btn">
-  <a href="{{ prev_person.url }}" class="person-nav-btn prev-btn">
-    <span class="person-nav-text">
+     <span class="person-nav-text">
       <span class="person-nav-label">← قبلی</span>
       <span class="person-nav-name">{{ prev_person.name_fa }}</span>
     </span>
@@ -475,12 +474,6 @@ layout: default
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-@media (max-width: 480px) {
-  .prev-btn {
-    justify-content: flex-start; /* 👈 این کلیدیه */
-  }
-}
-  
 .person-nav-thumb {
   width: 52px;
   height: 52px;
