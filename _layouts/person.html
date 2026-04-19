@@ -234,41 +234,52 @@ layout: default
   {% endif %}
 
 
-
   {% comment %} ===== PERSON NAVIGATION ===== {% endcomment %}
-  {% if prev_person or next_person %}
-  <nav class="person-nav" aria-label="ناوبری بین افراد">
-    <div class="person-nav-inner">
-      {% if next_person %}
-      <a class="person-nav-btn person-nav-next" href="{{ next_person.url | relative_url }}">
-        <span class="nav-arrow">&#8594;</span>
-        <span class="nav-info">
-          <span class="nav-label">بعدی</span>
-          <span class="nav-name">{{ next_person.name_fa }}</span>
-        </span>
-      </a>
-      {% else %}
-      <div class="person-nav-btn person-nav-next disabled"></div>
-      {% endif %}
-
-      <a class="person-nav-home" href="{{ '/australia' | relative_url }}" title="بازگشت به فهرست">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-      </a>
-
-      {% if prev_person %}
-      <a class="person-nav-btn person-nav-prev" href="{{ prev_person.url | relative_url }}">
-        <span class="nav-info">
-          <span class="nav-label">قبلی</span>
-          <span class="nav-name">{{ prev_person.name_fa }}</span>
-        </span>
-        <span class="nav-arrow">&#8592;</span>
-      </a>
-      {% else %}
-      <div class="person-nav-btn person-nav-prev disabled"></div>
-      {% endif %}
-    </div>
-  </nav>
+{% assign all_persons = site.australia | sort: "name_fa" %}
+{% assign total = all_persons | size %}
+{% assign current_index = nil %}
+{% for p in all_persons %}
+  {% if p.slug == page.slug %}
+    {% assign current_index = forloop.index0 %}
   {% endif %}
+{% endfor %}
+
+{% if current_index != nil %}
+  {% assign prev_index = current_index | minus: 1 %}
+  {% assign next_index = current_index | plus: 1 %}
+
+  {% if prev_index >= 0 %}
+    {% assign prev_person = all_persons[prev_index] %}
+  {% else %}
+    {% assign prev_person = nil %}
+  {% endif %}
+
+  {% if next_index < total %}
+    {% assign next_person = all_persons[next_index] %}
+  {% else %}
+    {% assign next_person = nil %}
+  {% endif %}
+{% endif %}
+
+{% if prev_person or next_person %}
+<div class="person-nav">
+  {% if next_person %}
+  <a href="{{ next_person.url }}" class="person-nav-btn">
+    → بعدی: {{ next_person.name_fa }}
+  </a>
+  {% else %}
+  <span class="person-nav-btn disabled"></span>
+  {% endif %}
+
+  {% if prev_person %}
+  <a href="{{ prev_person.url }}" class="person-nav-btn">
+    قبلی: {{ prev_person.name_fa }} ←
+  </a>
+  {% else %}
+  <span class="person-nav-btn disabled"></span>
+  {% endif %}
+</div>
+{% endif %}
 
   
   <section class="person-contact">
