@@ -265,18 +265,30 @@ layout: default
 <div class="person-nav">
   {% if next_person %}
   <a href="{{ next_person.url }}" class="person-nav-btn">
-    → بعدی: {{ next_person.name_fa }}
+    {% if next_person.featured_image and next_person.featured_image != '' %}
+    <img class="person-nav-thumb" src="{{ next_person.featured_image }}" alt="{{ next_person.name_fa }}">
+    {% endif %}
+    <span class="person-nav-text">
+      <span class="person-nav-label">بعدی →</span>
+      <span class="person-nav-name">{{ next_person.name_fa }}</span>
+    </span>
   </a>
   {% else %}
-  <span class="person-nav-btn disabled"></span>
+  <span></span>
   {% endif %}
 
   {% if prev_person %}
   <a href="{{ prev_person.url }}" class="person-nav-btn">
-    قبلی: {{ prev_person.name_fa }} ←
+    <span class="person-nav-text">
+      <span class="person-nav-label">← قبلی</span>
+      <span class="person-nav-name">{{ prev_person.name_fa }}</span>
+    </span>
+    {% if prev_person.featured_image and prev_person.featured_image != '' %}
+    <img class="person-nav-thumb" src="{{ prev_person.featured_image }}" alt="{{ prev_person.name_fa }}">
+    {% endif %}
   </a>
   {% else %}
-  <span class="person-nav-btn disabled"></span>
+  <span></span>
   {% endif %}
 </div>
 {% endif %}
@@ -433,6 +445,69 @@ layout: default
     border-radius: 24px;
     padding: 28px;
   }
+
+  .person-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e5e5;
+}
+
+.person-nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #f7f7f7;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 0.65rem 0.9rem;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.2s, box-shadow 0.2s;
+  max-width: 48%;
+}
+
+.person-nav-btn:hover {
+  background: #efefef;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.person-nav-thumb {
+  width: 52px;
+  height: 52px;
+  object-fit: cover;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: block;
+}
+
+.person-nav-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.person-nav-label {
+  font-size: 0.75rem;
+  color: #888;
+}
+
+.person-nav-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #222;
+}
+
+@media (max-width: 480px) {
+  .person-nav {
+    flex-direction: column;
+  }
+  .person-nav-btn {
+    max-width: 100%;
+  }
+}
 
   .prose p { margin: 0 0 1.2em; }
   .prose h2, .prose h3, .prose h4 { margin-top: 1.8em; margin-bottom: .8em; }
