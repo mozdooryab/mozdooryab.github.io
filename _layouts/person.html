@@ -227,6 +227,50 @@ layout: default
   </section>
   {% endif %}
 
+
+  
+  {% if page.tags_text and page.tags_text != '' %}
+  <p class="person-tags"><strong>برچسب‌ها:</strong> {{ page.tags_text }}</p>
+  {% endif %}
+
+
+
+  {% comment %} ===== PERSON NAVIGATION ===== {% endcomment %}
+  {% if prev_person or next_person %}
+  <nav class="person-nav" aria-label="ناوبری بین افراد">
+    <div class="person-nav-inner">
+      {% if next_person %}
+      <a class="person-nav-btn person-nav-next" href="{{ next_person.url | relative_url }}">
+        <span class="nav-arrow">&#8594;</span>
+        <span class="nav-info">
+          <span class="nav-label">بعدی</span>
+          <span class="nav-name">{{ next_person.name_fa }}</span>
+        </span>
+      </a>
+      {% else %}
+      <div class="person-nav-btn person-nav-next disabled"></div>
+      {% endif %}
+
+      <a class="person-nav-home" href="{{ '/australia' | relative_url }}" title="بازگشت به فهرست">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </a>
+
+      {% if prev_person %}
+      <a class="person-nav-btn person-nav-prev" href="{{ prev_person.url | relative_url }}">
+        <span class="nav-info">
+          <span class="nav-label">قبلی</span>
+          <span class="nav-name">{{ prev_person.name_fa }}</span>
+        </span>
+        <span class="nav-arrow">&#8592;</span>
+      </a>
+      {% else %}
+      <div class="person-nav-btn person-nav-prev disabled"></div>
+      {% endif %}
+    </div>
+  </nav>
+  {% endif %}
+
+  
   <section class="person-contact">
     <h2>ارتباط با ما</h2>
     <p class="person-contact-note">پیام شما برای سایت ارسال می‌شود، نه برای شخص.</p>
