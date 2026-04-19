@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://mozyab.com/sitemap.xml
