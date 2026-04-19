@@ -12,11 +12,11 @@ linkedin: ''
 instagram: ''
 facebook: ''
 telegram: ''
-featured_image: assets/uploads/masoomeh-alaibakhsh/pasted-image-1776563479750.png
-gallery_image_1: assets/uploads/masoomeh-alaibakhsh/pasted-image-1776563479750.png
-gallery_image_2: assets/uploads/masoomeh-alaibakhsh/pasted-image-1776563504947.png
-gallery_image_3: assets/uploads/masoomeh-alaibakhsh/image (47).jpg
-gallery_image_4: assets/uploads/masoomeh-alaibakhsh/image (48).jpg
+featured_image: /assets/uploads/masoomeh-alaibakhsh-1.png
+gallery_image_1: /assets/uploads/masoomeh-alaibakhsh-1.png
+gallery_image_2: /assets/uploads/masoomeh-alaibakhsh-2.png
+gallery_image_3: /assets/uploads/masoomeh-alaibakhsh-1.jpg
+gallery_image_4: /assets/uploads/masoomeh-alaibakhsh-2.jpg
 gallery_image_5: ''
 gallery_image_6: ''
 gallery_image_7: ''
