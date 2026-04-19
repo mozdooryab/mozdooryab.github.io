@@ -12,11 +12,11 @@ linkedin: softwareengineerjavaamirkanank
 instagram: ''
 facebook: ''
 telegram: ''
-featured_image: assets/uploads/amir-kanan-kashefi/pasted-image-1776604412490.png
-gallery_image_1: assets/uploads/amir-kanan-kashefi/image (59).jpg
-gallery_image_2: assets/uploads/amir-kanan-kashefi/image (60).jpg
-gallery_image_3: assets/uploads/amir-kanan-kashefi/image (58).jpg
-gallery_image_4: assets/uploads/amir-kanan-kashefi/pasted-image-1776604412490.png
+featured_image: /assets/uploads/amir-kanan-kashefi-1.png
+gallery_image_1: /assets/uploads/amir-kanan-kashefi-1.jpg
+gallery_image_2: /assets/uploads/amir-kanan-kashefi-2.jpg
+gallery_image_3: /assets/uploads/amir-kanan-kashefi-3.jpg
+gallery_image_4: /assets/uploads/amir-kanan-kashefi-1.png
 gallery_image_5: ''
 gallery_image_6: ''
 gallery_image_7: ''
